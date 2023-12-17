@@ -141,7 +141,7 @@ module counter_la_tb;
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
 		repeat (250) begin
-			repeat (1000*3) @(posedge clock);
+			repeat (1000) @(posedge clock);
 			// $display("+1000 cycles");
 		end
 		$display("%c[1;31m",27);

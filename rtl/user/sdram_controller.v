@@ -30,7 +30,8 @@ module sdram_controller (
         output  out_valid,          // pulses high when data from read is valid
 
         // user-define
-        input bank_read_en
+        input bank_read_en,
+        input wbs_read
     );
 
     // Jiin: SDRAM Timing  3-3-3, i.e. CASL=3, PRE=3, ACT=3
@@ -87,8 +88,8 @@ module sdram_controller (
                PRECHARGE = 4'd12;
     
     localparam  PREFETCH = 4'd13,
-                PREFETCH_RES = 4'd14;
-                //PREFETCH_IDLE=4'd15;
+                PREFETCH_RES = 4'd14,
+                PREFETCH_STALL=4'd15;
     
     // registers for SDRAM signals
     reg cle_d, cle_q;
@@ -153,6 +154,7 @@ module sdram_controller (
 
     reg [31:0] prefetcher [3:0];
     reg [31:0] output_buf;
+    reg [1:0] prefetch_length;
 
     always @(posedge clk) begin
         if(rst) begin
@@ -301,7 +303,8 @@ module sdram_controller (
                 // user-define
                 base_addr = 23'd0;
                 offset = 23'd0;
-                prefetch_flag = 1'd0;
+                //prefetch_flag = 1'd0;
+                prefetch_length = 2'd0;
             end
             WAIT: begin
                 delay_ctr_d = delay_ctr_q - 1'b1;
@@ -390,13 +393,6 @@ module sdram_controller (
                 cmd_d = CMD_READ;
                 a_d = {2'b0, 1'b0, addr_q[7:0], 2'b0};
                 ba_d = addr_q[9:8];
-                //state_d = WAIT;
-
-                //if(read_pend < 1'b1) begin
-                //    state_d = READ;
-                //end else begin
-                //    state_d = WAIT;
-                //end
 
                 // Jiin
                 // delay_ctr_d = 13'd2; // wait for the data to show up
@@ -407,27 +403,60 @@ module sdram_controller (
                 //user-define
                 state_d = PREFETCH;
                 base_addr = addr;
-                prefetch_flag = 1'b1;
 
             end
 
             ///// PREFETCH /////
             PREFETCH: begin
 
-                cmd_d = CMD_READ;
-
                 case(prefetch_cnt)
-                    2'd0:addr_q = addr_q + 8'h04;
-                    2'd1:addr_q = addr_q + 8'h08;
-                    2'd2:addr_q = addr_q + 8'h0A;
-                    default: addr_q <= addr_q;
+                    2'd0:begin
+                        addr_q = addr + 23'h4;
+                        if(addr[9:8] == addr_q[9:8])begin
+                            cmd_d = CMD_READ;
+                            a_d = {2'b0, 1'b0, addr_q[7:0], 2'b0};
+                            ba_d = addr_q[9:8];
+                            prefetch_length = 2'd1;
+                        end else begin
+                            state_d = PREFETCH_STALL;
+                        end
+                    end
+                    2'd1:begin
+                        addr_q = addr + 23'h8;
+                        if(addr[9:8] == addr_q[9:8])begin
+                            cmd_d = CMD_READ;
+                            a_d = {2'b0, 1'b0, addr_q[7:0], 2'b0};
+                            ba_d = addr_q[9:8];
+                            prefetch_length = 2'd2;
+                        end else begin
+                            state_d = PREFETCH_STALL;
+                        end
+                    end
+                    2'd2:begin
+                        addr_q = addr + 23'hC;
+                        if(addr[9:8] == addr_q[9:8])begin
+                            cmd_d = CMD_READ;
+                            a_d = {2'b0, 1'b0, addr_q[7:0], 2'b0};
+                            ba_d = addr_q[9:8];
+                            state_d = next_state_q;
+                            prefetch_length = 2'd3;
+                        end else begin
+                            state_d = PREFETCH_STALL;
+                        end
+                    end
+                    default: begin
+                        addr_q = addr;
+                    end
                 endcase
+            end
 
-                a_d = {2'b0, 1'b0, addr_q[7:0], 2'b0};
-                ba_d = addr_q[9:8];
-
-                if(prefetch_cnt == 2'd2)begin
+            PREFETCH_STALL:begin
+                // wait for 3 cycle for RAS from dram
+                if(prefetch_timer == 2'd3)begin
                     state_d = next_state_q;
+                end
+                else begin
+                    state_d = PREFETCH_STALL;
                 end
             end
 
@@ -450,14 +479,17 @@ module sdram_controller (
                         out_valid_d = 1'b1;
                         state_d = IDLE;
                     end
-                    23'hA:begin
+                    23'hC:begin
                         data_d = prefetcher[3];
                         out_valid_d = 1'b1;
                         state_d = IDLE;
                     end
                     default:begin
-                        state_d = READ;
-                        prefetch_flag = 1'b0;
+                        if(base_addr[9:8] == addr[9:8])begin
+                            state_d = READ;
+                        end else begin
+                            state_d = ACTIVATE;
+                        end
                     end
                 endcase
             end
@@ -497,6 +529,19 @@ module sdram_controller (
         endcase
     end
 
+    always @(posedge clk)begin
+        if(rst)begin
+            prefetch_flag <= 1'b0;
+        end else begin
+            if(!wbs_read)begin
+                prefetch_flag <= 1'b0;
+            end else begin
+                if(state_q == READ) prefetch_flag <= 1'b1;
+                else prefetch_flag <= prefetch_flag;
+            end
+        end
+    end
+
     reg [1:0] prefetch_cnt;
     always @(posedge clk) begin
         if(rst)begin
@@ -510,17 +555,18 @@ module sdram_controller (
         end
     end
 
-    //always @(posedge clk) begin
-    //    if(rst)begin
-    //        read_pend <= 1'd0;
-    //    end else begin
-    //        if (state_q == READ)begin
-    //            read_pend <= read_pend + 1'b1;
-    //        end else begin
-    //            read_pend <= read_pend;
-    //        end
-    //    end
-    //end
+    reg [1:0] prefetch_timer;
+    always @(posedge clk)begin
+        if(rst)begin
+            prefetch_timer = 2'd0;
+        end else begin
+            case(state_q)
+                PREFETCH: prefetch_timer <= 2'd0;
+                PREFETCH_RES: prefetch_timer <= prefetch_timer + 2'd1;
+                default: prefetch_timer <= prefetch_timer;
+            endcase
+        end
+    end
 
     always @(posedge clk) begin
         if(rst) begin

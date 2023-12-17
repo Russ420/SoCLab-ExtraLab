@@ -133,6 +133,8 @@ module user_proj_example #(
         end
     end
 
+    wire wbs_read;
+    assign wbs_read = ~wbs_we_i && wbs_cyc_i && wbs_stb_i;
     sdram_controller user_sdram_controller (
         .clk(clk),
         .rst(rst),
@@ -157,7 +159,8 @@ module user_proj_example #(
         .out_valid(ctrl_out_valid),
 
         // user-define
-        .bank_read_en(bank_read_en)
+        .bank_read_en(bank_read_en),
+        .wbs_read(wbs_read)
     );
 
     wire bank_read_en;

@@ -683,6 +683,7 @@ module sdr (
                     (Ba == 2'b10 && Pc_b2 == 1'b1) || (Ba == 2'b11 && Pc_b3 == 1'b1)) begin
                     Error <= 1;
 `ifdef SIM
+                    $timeformat(-12, 0, "ps", 14);
                     $display("%m : at time %t ERROR: Bank is not Activated for Read", $time);
 `endif
                 end
