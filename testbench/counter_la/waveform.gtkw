@@ -43,7 +43,6 @@ counter_la_tb.uut.mprj.mprj.wbs_dat_o[31:0]
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.Mapped_BA[1:0]
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.Mapped_CA[7:0]
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.Mapped_RA[12:0]
-counter_la_tb.uut.mprj.mprj.user_sdram_controller.state_q[3:0]
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.sample
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.pref_buf_0[31:0]
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.pref_buf_1[31:0]
@@ -55,6 +54,12 @@ counter_la_tb.uut.mprj.mprj.user_sdram_controller.offset[22:0]
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.prefetch_flag
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.prefetch_timer[1:0]
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.prefetch_length[1:0]
+- brust-related
+counter_la_tb.uut.mprj.mprj.user_sdram_controller.state_q[4:0]
+counter_la_tb.uut.mprj.mprj.user_sdram_controller.brust_en
+counter_la_tb.uut.mprj.mprj.user_sdram_controller.brust_flag
+counter_la_tb.uut.mprj.mprj.user_sdram_controller.brust_timer[1:0]
+
 -
 -User Bram
 @28

@@ -133,6 +133,10 @@ module user_proj_example #(
         end
     end
 
+    // user-define
+    wire brust_en;
+    assign brust_en = (wbs_adr_i[31:8] == 24'h3800_02) ? 1 : 0;
+
     wire wbs_read;
     assign wbs_read = ~wbs_we_i && wbs_cyc_i && wbs_stb_i;
     sdram_controller user_sdram_controller (
@@ -160,7 +164,8 @@ module user_proj_example #(
 
         // user-define
         .bank_read_en(bank_read_en),
-        .wbs_read(wbs_read)
+        .wbs_read(wbs_read),
+        .brust_en(brust_en)
     );
 
     wire bank_read_en;

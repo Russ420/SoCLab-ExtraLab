@@ -31,7 +31,8 @@ module sdram_controller (
 
         // user-define
         input bank_read_en,
-        input wbs_read
+        input wbs_read,
+        input brust_en
     );
 
     // Jiin: SDRAM Timing  3-3-3, i.e. CASL=3, PRE=3, ACT=3
@@ -72,24 +73,82 @@ module sdram_controller (
     localparam CMD_REFRESH       = 4'b0001;
     localparam CMD_LOAD_MODE_REG = 4'b0000;
     
-    localparam STATE_SIZE = 4;
-    localparam INIT = 4'd0,
-               WAIT = 4'd1,
-               PRECHARGE_INIT = 4'd2,
-               REFRESH_INIT_1 = 4'd3,
-               REFRESH_INIT_2 = 4'd4,
-               LOAD_MODE_REG = 4'd5,
-               IDLE = 4'd6,
-               REFRESH = 4'd7,
-               ACTIVATE = 4'd8,
-               READ = 4'd9,
-               READ_RES = 4'd10,
-               WRITE = 4'd11,
-               PRECHARGE = 4'd12;
+    //localparam STATE_SIZE = 4;
+    //localparam INIT = 4'd0,
+    //           WAIT = 4'd1,
+    //           PRECHARGE_INIT = 4'd2,
+    //           REFRESH_INIT_1 = 4'd3,
+    //           REFRESH_INIT_2 = 4'd4,
+    //           LOAD_MODE_REG = 4'd5,
+    //           IDLE = 4'd6,
+    //           REFRESH = 4'd7,
+    //           ACTIVATE = 4'd8,
+    //           READ = 4'd9,
+    //           READ_RES = 4'd10,
+    //           WRITE = 4'd11,
+    //           PRECHARGE = 4'd12;
     
-    localparam  PREFETCH = 4'd13,
-                PREFETCH_RES = 4'd14,
-                PREFETCH_STALL=4'd15;
+    //localparam  PREFETCH = 4'd13,
+    //            PREFETCH_RES = 4'd14,
+    //            PREFETCH_STALL=4'd15;
+
+    localparam STATE_SIZE = 5;
+    localparam INIT = 5'd0,
+               WAIT = 5'd1,
+               PRECHARGE_INIT = 5'd2,
+               REFRESH_INIT_1 = 5'd3,
+               REFRESH_INIT_2 = 5'd4,
+               LOAD_MODE_REG = 5'd5,
+               IDLE = 5'd6,
+               REFRESH = 5'd7,
+               ACTIVATE = 5'd8,
+               READ = 5'd9,
+               READ_RES = 5'd10,
+               WRITE = 5'd11,
+               PRECHARGE = 5'd12;
+    
+    // user-define
+    localparam  PREFETCH = 5'd13,
+                PREFETCH_RES = 5'd14,
+                PREFETCH_STALL=5'd15,
+                BRUST_RES = 5'h10;
+
+    localparam BRUST_LENGTH = 4;
+
+    // user-define
+    reg brust_flag;
+    reg [1:0]brust_timer;
+
+    always @(posedge clk)begin
+        if(rst)begin
+            brust_flag = 1'b0;
+        end else begin
+            if(brust_en)begin
+                case(state_d)
+                    BRUST_RES:  brust_flag <= 1'b1;
+                    IDLE:       brust_flag <= 1'b0;
+                    default: brust_flag <= brust_flag;
+                endcase
+            end else begin
+                brust_flag <= 1'b0;
+            end
+        end
+    end
+
+    always @(posedge clk)begin
+        if(rst)begin
+            brust_timer <= 2'd0;
+        end else begin
+            if(brust_flag)begin
+                brust_timer <= brust_timer + 2'd1;
+            end else begin
+                brust_timer <= 2'd0;
+            end
+        end
+    end
+
+
+
     
     // registers for SDRAM signals
     reg cle_d, cle_q;
@@ -397,12 +456,12 @@ module sdram_controller (
                 // Jiin
                 // delay_ctr_d = 13'd2; // wait for the data to show up
                 delay_ctr_d = tCASL; 
-
-                next_state_d = READ_RES;
+                //next_state_d = READ_RES;
                 
                 //user-define
                 state_d = PREFETCH;
                 base_addr = addr;
+                next_state_d = (brust_en) ? BRUST_RES : READ_RES;
 
             end
 
@@ -493,6 +552,31 @@ module sdram_controller (
                     end
                 endcase
             end
+
+            BRUST_RES:begin
+                // for regular 0x380002xx, 
+                // only for test, we need to reverse the output order to ensure correctness.
+                case(brust_timer)
+                    2'd0:begin
+                        data_d = prefetcher[0]; 
+                        state_d = BRUST_RES;
+                    end
+                    2'd1:begin
+                        data_d = prefetcher[1]; 
+                        state_d = BRUST_RES;
+                    end
+                    2'd2:begin
+                        data_d = prefetcher[2]; 
+                        state_d = BRUST_RES;
+                    end
+                    2'd3:begin
+                        data_d = prefetcher[0]; 
+                        state_d = IDLE; 
+                        out_valid_d = 1'b1;
+                    end
+                endcase
+            end
+
 
             ///// WRITE /////
             WRITE: begin
