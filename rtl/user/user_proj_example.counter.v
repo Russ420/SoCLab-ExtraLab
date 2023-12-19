@@ -67,7 +67,16 @@ module user_proj_example #(
     output [`MPRJ_IO_PADS-1:0] io_oeb,
 
     // IRQ
-    output [2:0] irq
+    output [2:0] irq,
+
+    // dma
+    input dma_wbs_cyc_i,
+    input dma_wbs_we_i,
+    input dma_wbs_stb_i,
+    input [31:0]dma_wbs_adr_i,
+
+    output dma_brust_valid
+
 );
     wire clk;
     wire rst, rst_n;
@@ -134,13 +143,46 @@ module user_proj_example #(
     end
 
     // user-define
-    wire brust_en;
-    assign brust_en = (wbs_adr_i[31:8] == 24'h3800_02) ? 1 : 0;
+    // dma-wbs usage
 
-    wire wbs_read;
-    assign wbs_read = ~wbs_we_i && wbs_cyc_i && wbs_stb_i;
+    //wire [31:0] dma_wbs_adr_i;
+    wire [22:0]dram_addr;
+    assign dram_addr = (dma_wbs_adr_i[31:23] == 9'hF0) ? dma_wbs_adr_i[22:0] : ctrl_addr;
+
+    //wire dma_wbs_we_i;
+    wire dram_rw;
+    assign dram_rw = (dma_wbs_adr_i[31:23] == 9'hF0) ? dma_wbs_we_i : wbs_we_i;
+
+    wire dram_in_valid;
+    assign dram_in_valid = (dma_wbs_adr_i[31:23] == 9'hF0) ? dma_in_valid_q : ctrl_in_valid;
+
+    //wire dma_wbs_cyc_i, dma_wbs_stb_i;
+    
+    reg dma_ctrl_in_valid_q;
+    reg dma_in_valid_q;
+    wire dma_valid; 
+    assign dma_valid = dma_wbs_stb_i && dma_wbs_cyc_i;
+    always @(posedge clk) begin
+        if (rst) begin
+            dma_in_valid_q <= 1'b0;
+        end
+        else begin
+            if (~dma_wbs_we_i && dma_valid && ~ctrl_busy && dma_ctrl_in_valid_q == 1'b0)
+                dma_in_valid_q <= 1'b1;
+            else if (ctrl_out_valid)
+                dma_in_valid_q <= 1'b0;
+        end
+    end
+
+    wire brust_en;
+    assign brust_en = (dma_wbs_adr_i[31:23] == 9'hF0) ? 1 : 0;
     
     wire brust_valid;
+    assign dma_brust_valid = brust_valid;
+    
+    // cpu-wbs prefetch usage
+    wire wbs_read;
+    assign wbs_read = ~wbs_we_i && wbs_cyc_i && wbs_stb_i;
 
     sdram_controller user_sdram_controller (
         .clk(clk),
@@ -157,12 +199,12 @@ module user_proj_example #(
         .sdram_dqi(d2c_data),
         .sdram_dqo(c2d_data),
 
-        .user_addr(ctrl_addr),
-        .rw(wbs_we_i),
+        .user_addr(dram_addr),
+        .rw(dram_rw),
         .data_in(wbs_dat_i),
         .data_out(wbs_dat_o),
         .busy(ctrl_busy),
-        .in_valid(ctrl_in_valid),
+        .in_valid(dram_in_valid),
         .out_valid(ctrl_out_valid),
 
         // user-define

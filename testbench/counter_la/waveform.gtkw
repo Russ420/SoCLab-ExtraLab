@@ -38,6 +38,14 @@ counter_la_tb.uut.mprj.mprj.wbs_dat_i[31:0]
 counter_la_tb.uut.mprj.mprj.wbs_dat_o[31:0]
 @200
 -
+-dma-signal
+@22
+counter_la_tb.uut.mprj.mprj.dma_wbs_cyc_i
+counter_la_tb.uut.mprj.mprj.dma_wbs_we_i
+counter_la_tb.uut.mprj.mprj.dma_wbs_stb_i
+counter_la_tb.uut.mprj.mprj.dma_wbs_adr_i[31:0]
+counter_la_tb.uut.mprj.mprj.dma_brust_valid
+-
 -user_sdram_controller
 @22
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.Mapped_BA[1:0]
@@ -60,7 +68,6 @@ counter_la_tb.uut.mprj.mprj.user_sdram_controller.brust_en
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.brust_valid
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.brust_flag
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.brust_timer[1:0]
-
 -
 -User Bram
 @28

@@ -21,6 +21,7 @@
 
 //extern int adder();
 extern int* matmul();
+//extern void dma();
 
 // --------------------------------------------------------
 
@@ -142,6 +143,10 @@ void main()
 	//print("\n");
 	//print("Monitor: Test 1 Passed\n\n");	// Makes simulation very long!
 	reg_mprj_datal = *(tmp+9) << 16;
+
+	// dma test
+	//dma(0x380000200, 0x380000220);
+
 	reg_mprj_datal = 0xAB510000;
 }
 

@@ -115,7 +115,16 @@ user_proj_example mprj (
     .io_oeb(io_oeb),
 
     // IRQ
-    .irq(user_irq)
+    .irq(user_irq),
+
+    // DMA
+    .dma_wbs_cyc_i(1'b1),
+    .dma_wbs_stb_i(1'b1),
+    .dma_wbs_we_i(1'b0),
+    .dma_wbs_adr_i(32'd0),
+
+    .dma_brust_valid()
+
 );
 
 endmodule	// user_project_wrapper

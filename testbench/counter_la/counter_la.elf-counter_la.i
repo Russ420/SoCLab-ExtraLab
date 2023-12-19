@@ -1615,11 +1615,11 @@ void print(const char *p)
 
 
 extern int* matmul();
-# 35 "counter_la.c"
+# 36 "counter_la.c"
 void main()
 {
  int j;
-# 64 "counter_la.c"
+# 65 "counter_la.c"
         (*(volatile uint32_t*)0x260000a0) = 0x1809;
         (*(volatile uint32_t*)0x2600009c) = 0x1809;
         (*(volatile uint32_t*)0x26000098) = 0x1809;
@@ -1678,7 +1678,7 @@ void main()
 
 
  (*(volatile uint32_t*) ((0xf0000000L + 0x3010L) + 8)) = (*(volatile uint32_t*) ((0xf0000000L + 0x3000L) + 8)) = 0x00000000;
-# 136 "counter_la.c"
+# 137 "counter_la.c"
  int *tmp = matmul();
  (*(volatile uint32_t*)0x2600000c) = *tmp << 16;
  (*(volatile uint32_t*)0x2600000c) = *(tmp+1) << 16;
@@ -1688,5 +1688,9 @@ void main()
 
 
  (*(volatile uint32_t*)0x2600000c) = *(tmp+9) << 16;
+
+
+
+
  (*(volatile uint32_t*)0x2600000c) = 0xAB510000;
 }

@@ -1255,7 +1255,7 @@ Disassembly of section .debug_line:
  562:	0902                	.2byte	0x902
  564:	000c                	.2byte	0xc
  566:	0401                	.2byte	0x401
- 568:	09060303          	lb	t1,144(a2)
+ 568:	09070303          	lb	t1,144(a4)
  56c:	0018                	.2byte	0x18
  56e:	0501                	.2byte	0x501
  570:	030a                	.2byte	0x30a
@@ -1682,7 +1682,7 @@ Disassembly of section .debug_line:
  932:	0900                	.2byte	0x900
  934:	0008                	.2byte	0x8
  936:	0501                	.2byte	0x501
- 938:	09010303          	lb	t1,144(sp)
+ 938:	09050303          	lb	t1,144(a0)
  93c:	0004                	.2byte	0x4
  93e:	0501                	.2byte	0x501
  940:	0324                	.2byte	0x324
@@ -2210,7 +2210,7 @@ Disassembly of section .debug_info:
  27c:	0b00                	.2byte	0xb00
  27e:	016e                	.2byte	0x16e
  280:	0000                	.2byte	0x0
- 282:	1c062303          	lw	t1,448(a2)
+ 282:	1c062403          	lw	s0,448(a2)
  286:	18100003          	lb	zero,385(zero) # 181 <_ebss+0x139>
  28a:	0004                	.2byte	0x4
  28c:	0100                	.2byte	0x100
@@ -2218,12 +2218,12 @@ Disassembly of section .debug_info:
  290:	0000                	.2byte	0x0
  292:	0c00                	.2byte	0xc00
  294:	006a                	.2byte	0x6a
- 296:	6a062503          	lw	a0,1696(a2)
+ 296:	6a062603          	lw	a2,1696(a2)
  29a:	0000                	.2byte	0x0
  29c:	0d00                	.2byte	0xd00
  29e:	6d74                	.2byte	0x6d74
  2a0:	0070                	.2byte	0x70
- 2a2:	8a078803          	lb	a6,-1888(a5)
+ 2a2:	8a078903          	lb	s2,-1888(a5)
  2a6:	0000                	.2byte	0x0
  2a8:	0200                	.2byte	0x200
  2aa:	6c91                	.2byte	0x6c91
