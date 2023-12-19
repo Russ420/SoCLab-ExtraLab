@@ -21,7 +21,7 @@
 
 //extern int adder();
 extern int* matmul();
-//extern void dma();
+extern void dma();
 
 // --------------------------------------------------------
 

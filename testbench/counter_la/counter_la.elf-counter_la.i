@@ -1615,6 +1615,7 @@ void print(const char *p)
 
 
 extern int* matmul();
+extern void dma();
 # 36 "counter_la.c"
 void main()
 {

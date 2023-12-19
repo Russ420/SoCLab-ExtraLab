@@ -118,10 +118,10 @@ user_proj_example mprj (
     .irq(user_irq),
 
     // DMA
-    .dma_wbs_cyc_i(1'b1),
-    .dma_wbs_stb_i(1'b1),
-    .dma_wbs_we_i(1'b0),
-    .dma_wbs_adr_i(32'd0),
+    .dma_wbs_cyc_i(wbs_cyc_i),
+    .dma_wbs_stb_i(wbs_stb_i),
+    .dma_wbs_we_i(wbs_we_i),
+    .dma_wbs_adr_i(wbs_adr_i),
 
     .dma_brust_valid()
 

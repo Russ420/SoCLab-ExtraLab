@@ -181,8 +181,14 @@ module user_proj_example #(
     assign dma_brust_valid = brust_valid;
     
     // cpu-wbs prefetch usage
+    wire cpu_wbs_read;
+    assign cpu_wbs_read = ~wbs_we_i && wbs_cyc_i && wbs_stb_i;
+    // dma-wbs prefetch usage
+    wire dma_wbs_read;
+    assign dma_wbs_read = ~dma_wbs_we_i & dma_wbs_cyc_i & dma_wbs_stb_i;
+    // sdram prefetch usage
     wire wbs_read;
-    assign wbs_read = ~wbs_we_i && wbs_cyc_i && wbs_stb_i;
+    assign wbs_read = cpu_wbs_read | dma_wbs_read;
 
     sdram_controller user_sdram_controller (
         .clk(clk),
