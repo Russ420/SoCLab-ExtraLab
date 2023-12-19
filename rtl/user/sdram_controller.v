@@ -32,7 +32,8 @@ module sdram_controller (
         // user-define
         input bank_read_en,
         input wbs_read,
-        input brust_en
+        input brust_en,
+        output reg brust_valid
     );
 
     // Jiin: SDRAM Timing  3-3-3, i.e. CASL=3, PRE=3, ACT=3
@@ -144,6 +145,18 @@ module sdram_controller (
             end else begin
                 brust_timer <= 2'd0;
             end
+        end
+    end
+
+    always @(posedge clk)begin
+        if(rst)begin
+            brust_valid <= 1'b0;
+        end else begin
+            case(state_q)
+                BRUST_RES: brust_valid <= 1'b1;
+                IDLE: brust_valid <= 1'b0;
+                default:brust_valid <= brust_valid;
+            endcase
         end
     end
 
@@ -364,6 +377,7 @@ module sdram_controller (
                 offset = 23'd0;
                 //prefetch_flag = 1'd0;
                 prefetch_length = 2'd0;
+                //brust_valid = 1'b0;
             end
             WAIT: begin
                 delay_ctr_d = delay_ctr_q - 1'b1;
@@ -412,6 +426,8 @@ module sdram_controller (
                         state_d = ACTIVATE; // open the row
                     end
                 end
+                // user-define
+                //brust_valid = 1'b0;
             end
 
             ///// REFRESH /////
@@ -560,19 +576,23 @@ module sdram_controller (
                     2'd0:begin
                         data_d = prefetcher[0]; 
                         state_d = BRUST_RES;
+                        //brust_valid = 1'b1;
                     end
                     2'd1:begin
                         data_d = prefetcher[1]; 
                         state_d = BRUST_RES;
+                        //brust_valid = 1'b1;
                     end
                     2'd2:begin
                         data_d = prefetcher[2]; 
                         state_d = BRUST_RES;
+                        //brust_valid = 1'b1;
                     end
                     2'd3:begin
                         data_d = prefetcher[0]; 
                         state_d = IDLE; 
                         out_valid_d = 1'b1;
+                        //brust_valid = 1'b1;
                     end
                 endcase
             end

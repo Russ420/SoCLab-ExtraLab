@@ -139,6 +139,9 @@ module user_proj_example #(
 
     wire wbs_read;
     assign wbs_read = ~wbs_we_i && wbs_cyc_i && wbs_stb_i;
+    
+    wire brust_valid;
+
     sdram_controller user_sdram_controller (
         .clk(clk),
         .rst(rst),
@@ -165,7 +168,8 @@ module user_proj_example #(
         // user-define
         .bank_read_en(bank_read_en),
         .wbs_read(wbs_read),
-        .brust_en(brust_en)
+        .brust_en(brust_en),
+        .brust_valid(brust_valid)
     );
 
     wire bank_read_en;

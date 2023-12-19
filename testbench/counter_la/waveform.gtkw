@@ -57,6 +57,7 @@ counter_la_tb.uut.mprj.mprj.user_sdram_controller.prefetch_length[1:0]
 - brust-related
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.state_q[4:0]
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.brust_en
+counter_la_tb.uut.mprj.mprj.user_sdram_controller.brust_valid
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.brust_flag
 counter_la_tb.uut.mprj.mprj.user_sdram_controller.brust_timer[1:0]
 
