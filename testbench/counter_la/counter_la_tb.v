@@ -141,7 +141,7 @@ module counter_la_tb;
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
 		repeat (250) begin
-			repeat (1000) @(posedge clock);
+			repeat (1000*2) @(posedge clock);
 			// $display("+1000 cycles");
 		end
 		$display("%c[1;31m",27);
@@ -172,17 +172,30 @@ module counter_la_tb;
 		$display("LA Test 1 started");
 		//wait(checkbits == 16'hAB41);
 
-		wait(checkbits == 16'h003E);
-		$display("Call function matmul() in User Project BRAM (mprjram, 0x38000000) return value passed, 0x%x", checkbits);
-		wait(checkbits == 16'h0044);
-		$display("Call function matmul() in User Project BRAM (mprjram, 0x38000000) return value passed, 0x%x", checkbits);
-		wait(checkbits == 16'h004A);
-		$display("Call function matmul() in User Project BRAM (mprjram, 0x38000000) return value passed, 0x%x", checkbits);
-		wait(checkbits == 16'h0050);
-		$display("Call function matmul() in User Project BRAM (mprjram, 0x38000000) return value passed, 0x%x", checkbits);		
+		fork 
+			begin
+				wait(checkbits == 16'h003E);
+				$display("Call function matmul() in User Project BRAM (mprjram, 0x38000000) return value passed, 0x%x", checkbits);
+				wait(checkbits == 16'h0044);
+				$display("Call function matmul() in User Project BRAM (mprjram, 0x38000000) return value passed, 0x%x", checkbits);
+				wait(checkbits == 16'h004A);
+				$display("Call function matmul() in User Project BRAM (mprjram, 0x38000000) return value passed, 0x%x", checkbits);
+				wait(checkbits == 16'h0050);
+				$display("Call function matmul() in User Project BRAM (mprjram, 0x38000000) return value passed, 0x%x", checkbits);		
+			end
+			begin
+				// wait(checkbits == 16'hAB51); $display("LA Test 2 passed");
+				// wait(checkbits == 16'hAB61); $display("LA Test 3 passed");
+				// wait(checkbits == 16'hAB62); $display("LA Test 4 passed");
+				wait(checkbits == 16'hAB63); $display("LA Test 5 passed");
+			end
+			begin
+				$display("DMA started");
+				wait(checkbits == 16'h000A); $display("dma address from 0x20 to 0x80");
+				$display("DMA passed");
+			end
+		join
 
-		wait(checkbits == 16'hAB51);
-		$display("LA Test 2 passed");
 		#10000;
 		$finish;
 	end

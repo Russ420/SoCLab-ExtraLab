@@ -589,7 +589,7 @@ module sdram_controller (
                         //brust_valid = 1'b1;
                     end
                     2'd3:begin
-                        data_d = prefetcher[0]; 
+                        data_d = prefetcher[3]; 
                         state_d = IDLE; 
                         out_valid_d = 1'b1;
                         //brust_valid = 1'b1;

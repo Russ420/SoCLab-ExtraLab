@@ -81,6 +81,23 @@ module user_project_wrapper #(
 /*--------------------------------------*/
 /* User project is instantiated  here   */
 /*--------------------------------------*/
+localparam DATA_WIDTH = 32;
+localparam DEPTH = 4;
+
+wire [3:0]  cpu_wbs_sel_i;
+wire [31:0] cpu_wbs_dat_i;
+wire [31:0] cpu_wbs_adr_i;
+wire cpu_wbs_ack_o;
+wire [31:0] cpu_wbs_dat_o;
+wire dram_burst_valid_o;
+wire dram_wbs_stb_i;
+wire dram_wbs_cyc_i;
+wire dram_wbs_we_i;
+wire dma_wbs_ack_o;
+wire [31:0] dram_wbs_adr_i;
+wire acc_data_valid_i;
+wire [31:0] acc_data_i;
+wire dram_fun_sel;
 
 user_proj_example mprj (
 `ifdef USE_POWER_PINS
@@ -115,7 +132,46 @@ user_proj_example mprj (
     .io_oeb(io_oeb),
 
     // IRQ
-    .irq(user_irq)
+    .irq(user_irq),
+
+    // DMA
+    .dma_fun_sel(dram_fun_sel),
+    .dma_wbs_cyc_i(dram_wbs_cyc_i),
+    .dma_wbs_stb_i(dram_wbs_stb_i),
+    .dma_wbs_we_i(dram_wbs_we_i),
+    .dma_wbs_adr_i(dram_wbs_adr_i),
+    .dma_brust_valid(dram_burst_valid_o),
+    .dma_wbs_ack_o(dma_wbs_ack_o)
+
+);
+
+DMA #(
+    .DATA_WIDTH(DATA_WIDTH),
+    .DEPTH(DEPTH)
+)DMA_inst(
+    .wb_clk_i(wb_clk_i),
+    .wb_rst_i(wb_rst_i),
+    // Caravel W)b
+    .cpu_wbs_stb_i(wbs_stb_i),
+    .cpu_wbs_cyc_i(wbs_cyc_i),
+    .cpu_wbs_we_i(wbs_we_i),
+    .cpu_wbs_sel_i(wbs_sel_i),
+    .cpu_wbs_dat_i(wbs_dat_i),
+    .cpu_wbs_adr_i(wbs_adr_i),
+    // .cpu_wbs_ack_o(wbs_ack_o),
+    // .cpu_wbs_dat_o(wbs_dat_o),
+    // DRAM control
+    .dram_fun_sel(dram_fun_sel),
+    .dram_wbs_ack_o(dma_wbs_ack_o),
+    .dram_burst_en_o(dram_burst_valid_o),
+    .dram_wbs_dat_o(wbs_dat_o),
+    .dram_wbs_stb_i(dram_wbs_stb_i),
+    .dram_wbs_cyc_i(dram_wbs_cyc_i),
+    .dram_wbs_we_i(dram_wbs_we_i),
+    .dram_wbs_adr_i(dram_wbs_adr_i),
+    // ACC
+    .acc_data_valid_i(acc_data_valid_i),
+    .acc_data_i(acc_data_i)
 );
 
 endmodule	// user_project_wrapper

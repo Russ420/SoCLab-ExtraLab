@@ -7,6 +7,8 @@
 -v ../../rtl/user/user_proj_example.counter.v
 -v ../../rtl/user/sdram_controller.v
 -v ../../rtl/user/sdr.v
+-v ../../rtl/user/DMA.v
+-v ../../rtl/user/FIFO.v
 
 ## VIP
 -v ../../vip/tbuart.v

@@ -7,9 +7,213 @@
 .Ltext0:
 	.cfi_sections	.debug_frame
 	.file 0 "/home/ubuntu/SoCLab/course-lab_d/lab-sdram/testbench/counter_la" "../../firmware/matmul.c"
+	.globl	__mulsi3
+	.section	.mprjram,"ax",@progbits
+	.align	2
+	.globl	matmul
+	.type	matmul, @function
+matmul:
+.LFB0:
+	.file 1 "../../firmware/matmul.c"
+	.loc 1 4 1
+	.cfi_startproc
+	addi	sp,sp,-64
+	.cfi_def_cfa_offset 64
+	sw	ra,60(sp)
+	sw	s0,56(sp)
+	sw	s1,52(sp)
+	sw	s2,48(sp)
+	sw	s3,44(sp)
+	sw	s4,40(sp)
+	sw	s5,36(sp)
+	sw	s6,32(sp)
+	sw	s7,28(sp)
+	sw	s8,24(sp)
+	sw	s9,20(sp)
+	sw	s10,16(sp)
+	sw	s11,12(sp)
+	.cfi_offset 1, -4
+	.cfi_offset 8, -8
+	.cfi_offset 9, -12
+	.cfi_offset 18, -16
+	.cfi_offset 19, -20
+	.cfi_offset 20, -24
+	.cfi_offset 21, -28
+	.cfi_offset 22, -32
+	.cfi_offset 23, -36
+	.cfi_offset 24, -40
+	.cfi_offset 25, -44
+	.cfi_offset 26, -48
+	.cfi_offset 27, -52
+	.loc 1 5 2
+.LVL0:
+	.loc 1 6 2
+	.loc 1 7 2
+	.loc 1 8 2
+	.loc 1 9 2
+	.loc 1 10 2
+	.loc 1 11 2
+	.loc 1 11 13
+	lui	s7,%hi(.LANCHOR0)
+	addi	s7,s7,%lo(.LANCHOR0)
+	addi	s3,s7,16
+	lui	s9,%hi(.LANCHOR1)
+	addi	s9,s9,%lo(.LANCHOR1)
+	.loc 1 12 9 is_stmt 0
+	li	s10,0
+	lui	s11,%hi(.LANCHOR0)
+	addi	s11,s11,%lo(.LANCHOR0)
+	.loc 1 12 14
+	li	s8,4
+.LVL1:
+.L2:
+	.loc 1 12 14 is_stmt 1
+	addi	s6,s11,64
+	.loc 1 13 8 is_stmt 0
+	mv	s5,s9
+	.loc 1 12 9
+	li	s4,0
+.LVL2:
+.L6:
+	.loc 1 14 15 is_stmt 1
+	.loc 1 4 1 is_stmt 0
+	mv	s1,s6
+	mv	s0,s7
+	.loc 1 13 8
+	li	s2,0
+.LVL3:
+.L3:
+	.loc 1 15 5 is_stmt 1 discriminator 3
+	.loc 1 15 25 is_stmt 0 discriminator 3
+	lw	a1,0(s1)
+	lw	a0,0(s0)
+	call	__mulsi3
+.LVL4:
+	.loc 1 15 9 discriminator 3
+	add	s2,s2,a0
+.LVL5:
+	.loc 1 14 19 is_stmt 1 discriminator 3
+	.loc 1 14 15 discriminator 3
+	addi	s0,s0,4
+	addi	s1,s1,16
+	bne	s0,s3,.L3
+	.loc 1 16 4 discriminator 2
+	.loc 1 16 22 is_stmt 0 discriminator 2
+	sw	s2,0(s5)
+	.loc 1 12 19 is_stmt 1 discriminator 2
+	addi	s4,s4,1
+.LVL6:
+	.loc 1 12 14 discriminator 2
+	addi	s5,s5,4
+	addi	s6,s6,4
+	bne	s4,s8,.L6
+	.loc 1 11 18 discriminator 2
+	.loc 1 11 13 discriminator 2
+	addi	s10,s10,4
+	addi	s7,s7,16
+	addi	s3,s3,16
+	addi	s9,s9,16
+	li	a5,16
+	bne	s10,a5,.L2
+	.loc 1 19 2
+	.loc 1 19 9 is_stmt 0
+	lui	a0,%hi(.LANCHOR1)
+	.loc 1 20 1
+	addi	a0,a0,%lo(.LANCHOR1)
+	lw	ra,60(sp)
+	.cfi_restore 1
+	lw	s0,56(sp)
+	.cfi_restore 8
+	lw	s1,52(sp)
+	.cfi_restore 9
+	lw	s2,48(sp)
+	.cfi_restore 18
+.LVL7:
+	lw	s3,44(sp)
+	.cfi_restore 19
+	lw	s4,40(sp)
+	.cfi_restore 20
+.LVL8:
+	lw	s5,36(sp)
+	.cfi_restore 21
+.LVL9:
+	lw	s6,32(sp)
+	.cfi_restore 22
+	lw	s7,28(sp)
+	.cfi_restore 23
+	lw	s8,24(sp)
+	.cfi_restore 24
+	lw	s9,20(sp)
+	.cfi_restore 25
+	lw	s10,16(sp)
+	.cfi_restore 26
+	lw	s11,12(sp)
+	.cfi_restore 27
+	addi	sp,sp,64
+	.cfi_def_cfa_offset 0
+	jr	ra
+	.cfi_endproc
+.LFE0:
+	.size	matmul, .-matmul
+	.align	2
+	.globl	dma
+	.type	dma, @function
+dma:
+.LFB1:
+	.loc 1 22 57 is_stmt 1
+	.cfi_startproc
+	.loc 1 24 2
+	.loc 1 24 12 is_stmt 0
+	lui	a5,%hi(fir_addr)
+	lw	a4,%lo(fir_addr)(a5)
+	.loc 1 24 10
+	lui	a5,%hi(fir_ptr)
+	sw	a4,%lo(fir_ptr)(a5)
+	.loc 1 25 2 is_stmt 1
+	.loc 1 25 12 is_stmt 0
+	lui	a3,%hi(mat_addr)
+	lw	a2,%lo(mat_addr)(a3)
+	.loc 1 25 10
+	lui	a3,%hi(mat_ptr)
+	sw	a2,%lo(mat_ptr)(a3)
+	.loc 1 28 2 is_stmt 1
+	.loc 1 28 11 is_stmt 0
+	li	a3,124
+	sw	a3,0(a4)
+	.loc 1 29 2 is_stmt 1
+	lw	a3,%lo(fir_ptr)(a5)
+	.loc 1 29 11 is_stmt 0
+	li	a4,8126464
+	addi	a4,a4,124
+	sw	a4,0(a3)
+	.loc 1 30 2 is_stmt 1
+	lw	a4,%lo(fir_ptr)(a5)
+	.loc 1 30 11 is_stmt 0
+	li	a5,342360064
+	addi	a5,a5,124
+	sw	a5,0(a4)
+	.loc 1 31 1
+	ret
+	.cfi_endproc
+.LFE1:
+	.size	dma, .-dma
+	.globl	result
+	.globl	B
 	.globl	A
+	.globl	mat_addr
+	.globl	mat_ptr
+	.globl	fir_addr
+	.globl	fir_ptr
+	.bss
+	.align	2
+	.set	.LANCHOR1,. + 0
+	.type	result, @object
+	.size	result, 64
+result:
+	.zero	64
 	.section	.adder,"aw"
 	.align	2
+	.set	.LANCHOR0,. + 0
 	.type	A, @object
 	.size	A, 64
 A:
@@ -29,8 +233,6 @@ A:
 	.word	1
 	.word	2
 	.word	3
-	.globl	B
-	.align	2
 	.type	B, @object
 	.size	B, 64
 B:
@@ -50,260 +252,253 @@ B:
 	.word	14
 	.word	15
 	.word	16
-	.globl	result
-	.bss
+	.section	.sbss,"aw",@nobits
 	.align	2
-	.type	result, @object
-	.size	result, 64
-result:
-	.zero	64
-	.globl	__mulsi3
-	.section	.mprjram,"ax",@progbits
+	.type	mat_ptr, @object
+	.size	mat_ptr, 4
+mat_ptr:
+	.zero	4
+	.type	fir_ptr, @object
+	.size	fir_ptr, 4
+fir_ptr:
+	.zero	4
+	.section	.sdata,"aw"
 	.align	2
-	.globl	matmul
-	.type	matmul, @function
-matmul:
-.LFB0:
-	.file 1 "../../firmware/matmul.c"
-	.loc 1 4 1
-	.cfi_startproc
-	addi	sp,sp,-48
-	.cfi_def_cfa_offset 48
-	sw	ra,44(sp)
-	sw	s0,40(sp)
-	.cfi_offset 1, -4
-	.cfi_offset 8, -8
-	addi	s0,sp,48
-	.cfi_def_cfa 8, 0
-	.loc 1 5 6
-	sw	zero,-20(s0)
-	.loc 1 10 15
-	sw	zero,-36(s0)
-	.loc 1 11 8
-	sw	zero,-20(s0)
-	.loc 1 11 2
-	j	.L2
-.L7:
-	.loc 1 12 9
-	sw	zero,-24(s0)
-	.loc 1 12 3
-	j	.L3
-.L6:
-	.loc 1 13 8
-	sw	zero,-32(s0)
-	.loc 1 14 10
-	sw	zero,-28(s0)
-	.loc 1 14 4
-	j	.L4
-.L5:
-	.loc 1 15 16 discriminator 3
-	lw	a5,-20(s0)
-	slli	a4,a5,2
-	.loc 1 15 20 discriminator 3
-	lw	a5,-28(s0)
-	add	a5,a4,a5
-	.loc 1 15 13 discriminator 3
-	lui	a4,%hi(A)
-	addi	a4,a4,%lo(A)
-	slli	a5,a5,2
-	add	a5,a4,a5
-	lw	a3,0(a5)
-	.loc 1 15 31 discriminator 3
-	lw	a5,-28(s0)
-	slli	a4,a5,2
-	.loc 1 15 35 discriminator 3
-	lw	a5,-24(s0)
-	add	a5,a4,a5
-	.loc 1 15 28 discriminator 3
-	lui	a4,%hi(B)
-	addi	a4,a4,%lo(B)
-	slli	a5,a5,2
-	add	a5,a4,a5
-	lw	a5,0(a5)
-	.loc 1 15 25 discriminator 3
-	mv	a1,a5
-	mv	a0,a3
-	call	__mulsi3
-	mv	a5,a0
-	mv	a4,a5
-	.loc 1 15 9 discriminator 3
-	lw	a5,-32(s0)
-	add	a5,a5,a4
-	sw	a5,-32(s0)
-	.loc 1 14 19 discriminator 3
-	lw	a5,-28(s0)
-	addi	a5,a5,1
-	sw	a5,-28(s0)
-.L4:
-	.loc 1 14 15 discriminator 1
-	lw	a4,-28(s0)
-	li	a5,3
-	ble	a4,a5,.L5
-	.loc 1 16 13 discriminator 2
-	lw	a5,-20(s0)
-	slli	a4,a5,2
-	.loc 1 16 17 discriminator 2
-	lw	a5,-24(s0)
-	add	a5,a4,a5
-	.loc 1 16 22 discriminator 2
-	lui	a4,%hi(result)
-	addi	a4,a4,%lo(result)
-	slli	a5,a5,2
-	add	a5,a4,a5
-	lw	a4,-32(s0)
-	sw	a4,0(a5)
-	.loc 1 12 19 discriminator 2
-	lw	a5,-24(s0)
-	addi	a5,a5,1
-	sw	a5,-24(s0)
-.L3:
-	.loc 1 12 14 discriminator 1
-	lw	a4,-24(s0)
-	li	a5,3
-	ble	a4,a5,.L6
-	.loc 1 11 18 discriminator 2
-	lw	a5,-20(s0)
-	addi	a5,a5,1
-	sw	a5,-20(s0)
-.L2:
-	.loc 1 11 13 discriminator 1
-	lw	a4,-20(s0)
-	li	a5,3
-	ble	a4,a5,.L7
-	.loc 1 19 9
-	lui	a5,%hi(result)
-	addi	a5,a5,%lo(result)
-	.loc 1 20 1
-	mv	a0,a5
-	lw	ra,44(sp)
-	.cfi_restore 1
-	lw	s0,40(sp)
-	.cfi_restore 8
-	.cfi_def_cfa 2, 48
-	addi	sp,sp,48
-	.cfi_def_cfa_offset 0
-	jr	ra
-	.cfi_endproc
-.LFE0:
-	.size	matmul, .-matmul
+	.type	mat_addr, @object
+	.size	mat_addr, 4
+mat_addr:
+	.word	806354944
+	.type	fir_addr, @object
+	.size	fir_addr, 4
+fir_addr:
+	.word	805306368
 	.text
 .Letext0:
 	.file 2 "../../firmware/matmul.h"
+	.file 3 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.4byte	0xd8
+	.4byte	0x18e
 	.2byte	0x5
 	.byte	0x1
 	.byte	0x4
 	.4byte	.Ldebug_abbrev0
-	.byte	0x3
-	.4byte	.LASF5
+	.byte	0x6
+	.4byte	.LASF17
 	.byte	0x1d
 	.4byte	.LASF0
 	.4byte	.LASF1
-	.4byte	.LLRL0
+	.4byte	.LLRL4
 	.4byte	0
 	.4byte	.Ldebug_line0
-	.byte	0x4
-	.4byte	0x3d
-	.4byte	0x36
-	.byte	0x5
-	.4byte	0x36
-	.byte	0xf
-	.byte	0
+	.byte	0x1
+	.byte	0x1
 	.byte	0x6
+	.4byte	.LASF2
+	.byte	0x1
+	.byte	0x2
+	.byte	0x5
+	.4byte	.LASF3
+	.byte	0x1
+	.byte	0x4
+	.byte	0x5
+	.4byte	.LASF4
+	.byte	0x1
+	.byte	0x8
+	.byte	0x5
+	.4byte	.LASF5
+	.byte	0x1
+	.byte	0x1
+	.byte	0x8
+	.4byte	.LASF6
+	.byte	0x1
+	.byte	0x2
+	.byte	0x7
+	.4byte	.LASF7
+	.byte	0x7
+	.4byte	.LASF18
+	.byte	0x3
+	.byte	0x34
+	.byte	0x1b
+	.4byte	0x61
+	.byte	0x8
+	.4byte	0x50
+	.byte	0x1
 	.byte	0x4
 	.byte	0x7
-	.4byte	.LASF2
+	.4byte	.LASF8
+	.byte	0x1
+	.byte	0x8
 	.byte	0x7
+	.4byte	.LASF9
+	.byte	0x9
 	.byte	0x4
 	.byte	0x5
 	.string	"int"
+	.byte	0x1
+	.byte	0x4
+	.byte	0x7
+	.4byte	.LASF10
 	.byte	0x2
-	.string	"A"
+	.4byte	.LASF11
 	.byte	0x5
-	.4byte	0x26
+	.byte	0x14
+	.4byte	0x8e
+	.byte	0x5
+	.byte	0x3
+	.4byte	fir_ptr
+	.byte	0x4
+	.4byte	0x5c
+	.byte	0x2
+	.4byte	.LASF12
+	.byte	0x6
+	.byte	0x13
+	.4byte	0x5c
+	.byte	0x5
+	.byte	0x3
+	.4byte	fir_addr
+	.byte	0x2
+	.4byte	.LASF13
+	.byte	0x7
+	.byte	0x14
+	.4byte	0x8e
+	.byte	0x5
+	.byte	0x3
+	.4byte	mat_ptr
+	.byte	0x2
+	.4byte	.LASF14
+	.byte	0x8
+	.byte	0x13
+	.4byte	0x5c
+	.byte	0x5
+	.byte	0x3
+	.4byte	mat_addr
+	.byte	0xa
+	.4byte	0x6f
+	.4byte	0xd6
+	.byte	0xb
+	.4byte	0x76
+	.byte	0xf
+	.byte	0
+	.byte	0x5
+	.string	"A"
+	.byte	0xb
+	.4byte	0xc6
 	.byte	0x5
 	.byte	0x3
 	.4byte	A
-	.byte	0x2
+	.byte	0x5
 	.string	"B"
-	.byte	0xa
-	.4byte	0x26
+	.byte	0x10
+	.4byte	0xc6
 	.byte	0x5
 	.byte	0x3
 	.4byte	B
-	.byte	0x8
-	.4byte	.LASF3
 	.byte	0x2
-	.byte	0xf
+	.4byte	.LASF15
+	.byte	0x15
 	.byte	0x6
-	.4byte	0x26
+	.4byte	0xc6
 	.byte	0x5
 	.byte	0x3
 	.4byte	result
-	.byte	0x9
-	.4byte	.LASF6
+	.byte	0xc
+	.string	"dma"
+	.byte	0x1
+	.byte	0x16
+	.byte	0x33
+	.4byte	.LFB1
+	.4byte	.LFE1-.LFB1
+	.byte	0x1
+	.byte	0x9c
+	.byte	0xd
+	.4byte	.LASF19
 	.byte	0x1
 	.byte	0x3
 	.byte	0x33
-	.4byte	0xd5
+	.4byte	0x183
 	.4byte	.LFB0
 	.4byte	.LFE0-.LFB0
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0xd5
-	.byte	0x1
+	.4byte	0x183
+	.byte	0x3
 	.string	"i"
 	.byte	0x5
-	.4byte	0x3d
-	.byte	0x2
-	.byte	0x91
-	.byte	0x6c
-	.byte	0x1
+	.4byte	0x6f
+	.4byte	.LLST0
+	.byte	0x3
 	.string	"j"
 	.byte	0x6
-	.4byte	0x3d
-	.byte	0x2
-	.byte	0x91
-	.byte	0x68
-	.byte	0x1
+	.4byte	0x6f
+	.4byte	.LLST1
+	.byte	0x3
 	.string	"k"
 	.byte	0x7
-	.4byte	0x3d
-	.byte	0x2
-	.byte	0x91
-	.byte	0x64
-	.byte	0x1
+	.4byte	0x6f
+	.4byte	.LLST2
+	.byte	0x3
 	.string	"sum"
 	.byte	0x8
-	.4byte	0x3d
-	.byte	0x2
-	.byte	0x91
-	.byte	0x60
-	.byte	0xa
+	.4byte	0x6f
+	.4byte	.LLST3
+	.byte	0xe
 	.string	"kk"
 	.byte	0x1
 	.byte	0x9
 	.byte	0x6
-	.4byte	0x3d
-	.byte	0xb
-	.4byte	.LASF4
+	.4byte	0x6f
+	.byte	0xf
+	.4byte	.LASF16
 	.byte	0x1
 	.byte	0xa
 	.byte	0xf
-	.4byte	0x36
-	.byte	0x2
-	.byte	0x91
-	.byte	0x5c
+	.4byte	0x76
 	.byte	0
-	.byte	0xc
+	.byte	0x10
+	.4byte	.LVL4
+	.4byte	0x188
+	.byte	0
 	.byte	0x4
-	.4byte	0x3d
+	.4byte	0x6f
+	.byte	0x11
+	.4byte	.LASF20
+	.4byte	.LASF20
 	.byte	0
 	.section	.debug_abbrev,"",@progbits
 .Ldebug_abbrev0:
 	.byte	0x1
+	.byte	0x24
+	.byte	0
+	.byte	0xb
+	.byte	0xb
+	.byte	0x3e
+	.byte	0xb
+	.byte	0x3
+	.byte	0xe
+	.byte	0
+	.byte	0
+	.byte	0x2
+	.byte	0x34
+	.byte	0
+	.byte	0x3
+	.byte	0xe
+	.byte	0x3a
+	.byte	0x21
+	.byte	0x2
+	.byte	0x3b
+	.byte	0xb
+	.byte	0x39
+	.byte	0xb
+	.byte	0x49
+	.byte	0x13
+	.byte	0x3f
+	.byte	0x19
+	.byte	0x2
+	.byte	0x18
+	.byte	0
+	.byte	0
+	.byte	0x3
 	.byte	0x34
 	.byte	0
 	.byte	0x3
@@ -319,10 +514,20 @@ matmul:
 	.byte	0x49
 	.byte	0x13
 	.byte	0x2
-	.byte	0x18
+	.byte	0x17
 	.byte	0
 	.byte	0
-	.byte	0x2
+	.byte	0x4
+	.byte	0xf
+	.byte	0
+	.byte	0xb
+	.byte	0x21
+	.byte	0x4
+	.byte	0x49
+	.byte	0x13
+	.byte	0
+	.byte	0
+	.byte	0x5
 	.byte	0x34
 	.byte	0
 	.byte	0x3
@@ -343,7 +548,7 @@ matmul:
 	.byte	0x18
 	.byte	0
 	.byte	0
-	.byte	0x3
+	.byte	0x6
 	.byte	0x11
 	.byte	0x1
 	.byte	0x25
@@ -362,48 +567,8 @@ matmul:
 	.byte	0x17
 	.byte	0
 	.byte	0
-	.byte	0x4
-	.byte	0x1
-	.byte	0x1
-	.byte	0x49
-	.byte	0x13
-	.byte	0x1
-	.byte	0x13
-	.byte	0
-	.byte	0
-	.byte	0x5
-	.byte	0x21
-	.byte	0
-	.byte	0x49
-	.byte	0x13
-	.byte	0x2f
-	.byte	0xb
-	.byte	0
-	.byte	0
-	.byte	0x6
-	.byte	0x24
-	.byte	0
-	.byte	0xb
-	.byte	0xb
-	.byte	0x3e
-	.byte	0xb
-	.byte	0x3
-	.byte	0xe
-	.byte	0
-	.byte	0
 	.byte	0x7
-	.byte	0x24
-	.byte	0
-	.byte	0xb
-	.byte	0xb
-	.byte	0x3e
-	.byte	0xb
-	.byte	0x3
-	.byte	0x8
-	.byte	0
-	.byte	0
-	.byte	0x8
-	.byte	0x34
+	.byte	0x16
 	.byte	0
 	.byte	0x3
 	.byte	0xe
@@ -415,13 +580,68 @@ matmul:
 	.byte	0xb
 	.byte	0x49
 	.byte	0x13
-	.byte	0x3f
-	.byte	0x19
-	.byte	0x2
-	.byte	0x18
+	.byte	0
+	.byte	0
+	.byte	0x8
+	.byte	0x35
+	.byte	0
+	.byte	0x49
+	.byte	0x13
 	.byte	0
 	.byte	0
 	.byte	0x9
+	.byte	0x24
+	.byte	0
+	.byte	0xb
+	.byte	0xb
+	.byte	0x3e
+	.byte	0xb
+	.byte	0x3
+	.byte	0x8
+	.byte	0
+	.byte	0
+	.byte	0xa
+	.byte	0x1
+	.byte	0x1
+	.byte	0x49
+	.byte	0x13
+	.byte	0x1
+	.byte	0x13
+	.byte	0
+	.byte	0
+	.byte	0xb
+	.byte	0x21
+	.byte	0
+	.byte	0x49
+	.byte	0x13
+	.byte	0x2f
+	.byte	0xb
+	.byte	0
+	.byte	0
+	.byte	0xc
+	.byte	0x2e
+	.byte	0
+	.byte	0x3f
+	.byte	0x19
+	.byte	0x3
+	.byte	0x8
+	.byte	0x3a
+	.byte	0xb
+	.byte	0x3b
+	.byte	0xb
+	.byte	0x39
+	.byte	0xb
+	.byte	0x11
+	.byte	0x1
+	.byte	0x12
+	.byte	0x6
+	.byte	0x40
+	.byte	0x18
+	.byte	0x7a
+	.byte	0x19
+	.byte	0
+	.byte	0
+	.byte	0xd
 	.byte	0x2e
 	.byte	0x1
 	.byte	0x3f
@@ -442,13 +662,13 @@ matmul:
 	.byte	0x6
 	.byte	0x40
 	.byte	0x18
-	.byte	0x7c
+	.byte	0x7a
 	.byte	0x19
 	.byte	0x1
 	.byte	0x13
 	.byte	0
 	.byte	0
-	.byte	0xa
+	.byte	0xe
 	.byte	0x34
 	.byte	0
 	.byte	0x3
@@ -463,7 +683,7 @@ matmul:
 	.byte	0x13
 	.byte	0
 	.byte	0
-	.byte	0xb
+	.byte	0xf
 	.byte	0x34
 	.byte	0
 	.byte	0x3
@@ -476,22 +696,92 @@ matmul:
 	.byte	0xb
 	.byte	0x49
 	.byte	0x13
-	.byte	0x2
-	.byte	0x18
-	.byte	0
-	.byte	0
-	.byte	0xc
-	.byte	0xf
-	.byte	0
+	.byte	0x1c
 	.byte	0xb
-	.byte	0xb
-	.byte	0x49
+	.byte	0
+	.byte	0
+	.byte	0x10
+	.byte	0x48
+	.byte	0
+	.byte	0x7d
+	.byte	0x1
+	.byte	0x7f
 	.byte	0x13
 	.byte	0
 	.byte	0
+	.byte	0x11
+	.byte	0x2e
 	.byte	0
+	.byte	0x3f
+	.byte	0x19
+	.byte	0x3c
+	.byte	0x19
+	.byte	0x6e
+	.byte	0xe
+	.byte	0x3
+	.byte	0xe
+	.byte	0
+	.byte	0
+	.byte	0
+	.section	.debug_loclists,"",@progbits
+	.4byte	.Ldebug_loc3-.Ldebug_loc2
+.Ldebug_loc2:
+	.2byte	0x5
+	.byte	0x4
+	.byte	0
+	.4byte	0
+.Ldebug_loc0:
+.LLST0:
+	.byte	0x7
+	.4byte	.LVL0
+	.4byte	.LVL1
+	.byte	0x2
+	.byte	0x30
+	.byte	0x9f
+	.byte	0
+.LLST1:
+	.byte	0x7
+	.4byte	.LVL1
+	.4byte	.LVL2
+	.byte	0x2
+	.byte	0x30
+	.byte	0x9f
+	.byte	0x7
+	.4byte	.LVL2
+	.4byte	.LVL8
+	.byte	0x1
+	.byte	0x64
+	.byte	0
+.LLST2:
+	.byte	0x7
+	.4byte	.LVL2
+	.4byte	.LVL3
+	.byte	0x2
+	.byte	0x30
+	.byte	0x9f
+	.byte	0
+.LLST3:
+	.byte	0x7
+	.4byte	.LVL2
+	.4byte	.LVL3
+	.byte	0x2
+	.byte	0x30
+	.byte	0x9f
+	.byte	0x7
+	.4byte	.LVL3
+	.4byte	.LVL7
+	.byte	0x1
+	.byte	0x62
+	.byte	0x7
+	.4byte	.LVL7
+	.4byte	.LVL9
+	.byte	0x2
+	.byte	0x85
+	.byte	0x7c
+	.byte	0
+.Ldebug_loc3:
 	.section	.debug_aranges,"",@progbits
-	.4byte	0x1c
+	.4byte	0x24
 	.2byte	0x2
 	.4byte	.Ldebug_info0
 	.byte	0x4
@@ -500,6 +790,8 @@ matmul:
 	.2byte	0
 	.4byte	.LFB0
 	.4byte	.LFE0-.LFB0
+	.4byte	.LFB1
+	.4byte	.LFE1-.LFB1
 	.4byte	0
 	.4byte	0
 	.section	.debug_rnglists,"",@progbits
@@ -510,25 +802,56 @@ matmul:
 	.byte	0x4
 	.byte	0
 	.4byte	0
-.LLRL0:
+.LLRL4:
 	.byte	0x6
 	.4byte	.LFB0
 	.4byte	.LFE0
+	.byte	0x6
+	.4byte	.LFB1
+	.4byte	.LFE1
 	.byte	0
 .Ldebug_ranges3:
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
-.LASF2:
-	.string	"unsigned int"
-.LASF3:
-	.string	"result"
-.LASF4:
+.LASF16:
 	.string	"count"
-.LASF6:
+.LASF17:
+	.string	"GNU C17 12.1.0 -mabi=ilp32 -mtune=rocket -misa-spec=2.2 -march=rv32i -g -O1 -ffreestanding"
+.LASF14:
+	.string	"mat_addr"
+.LASF19:
 	.string	"matmul"
+.LASF11:
+	.string	"fir_ptr"
+.LASF6:
+	.string	"unsigned char"
+.LASF8:
+	.string	"long unsigned int"
+.LASF7:
+	.string	"short unsigned int"
+.LASF20:
+	.string	"__mulsi3"
+.LASF10:
+	.string	"unsigned int"
+.LASF9:
+	.string	"long long unsigned int"
+.LASF12:
+	.string	"fir_addr"
+.LASF15:
+	.string	"result"
 .LASF5:
-	.string	"GNU C17 12.1.0 -mabi=ilp32 -mtune=rocket -misa-spec=2.2 -march=rv32i -g -ffreestanding"
+	.string	"long long int"
+.LASF3:
+	.string	"short int"
+.LASF13:
+	.string	"mat_ptr"
+.LASF18:
+	.string	"uint32_t"
+.LASF4:
+	.string	"long int"
+.LASF2:
+	.string	"signed char"
 	.section	.debug_line_str,"MS",@progbits,1
 .LASF1:
 	.string	"/home/ubuntu/SoCLab/course-lab_d/lab-sdram/testbench/counter_la"

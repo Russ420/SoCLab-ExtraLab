@@ -18,3 +18,13 @@ int* __attribute__ ( ( section ( ".mprjram" ) ) ) matmul()
 	}
 	return result;
 }
+
+void __attribute__ ( ( section ( ".mprjram" ) ) ) dma() {
+	fir_ptr = (volatile uint32_t*)fir_addr;
+	mat_ptr = (volatile uint32_t*)mat_addr;
+
+	// dma test
+	*fir_ptr = 0x0000007c;
+	*fir_ptr = 0x007c007c;
+	*fir_ptr = 0x1468007c;
+}

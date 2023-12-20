@@ -18,9 +18,12 @@
 // This include is relative to $CARAVEL_PATH (see Makefile)
 #include <defs.h>
 #include <stub.c>
+// #include "counter_la.h"
 
 //extern int adder();
 extern int* matmul();
+extern void dma();
+
 
 // --------------------------------------------------------
 
@@ -128,11 +131,26 @@ void main()
 		}
 	}
 */	
+	//volatile uint32_t *inst_ptr;
+	//volatile uint32_t fir_addr = 0x36000000;
+	//volatile uint32_t mat_addr = 0x36100000;
+	
 	//reg_mprj_datal = adder() << 16;	
 
 	////print("\n");
 	////print("Monitor: Test 1 Passed\n\n");	// Makes simulation very long!
 	//reg_mprj_datal = 0xAB510000;
+	// fir_ptr = (volatile uint32_t*)fir_addr;
+	// mat_ptr = (volatile uint32_t*)mat_addr;
+
+	// // dma test
+	// *fir_ptr = 0x0000007c;
+	// // reg_mprj_datal = 0xAB610000;
+	// // reg_mprj_datal = 0xAB620000;
+	// // *fir_ptr = 0x0000007c;
+	// // *fir_ptr = 0x0070007c;
+	// reg_mprj_datal = 0xAB630000;
+
 	int *tmp = matmul();
 	reg_mprj_datal = *tmp << 16;
 	reg_mprj_datal = *(tmp+1) << 16;
@@ -142,6 +160,8 @@ void main()
 	//print("\n");
 	//print("Monitor: Test 1 Passed\n\n");	// Makes simulation very long!
 	reg_mprj_datal = *(tmp+9) << 16;
-	reg_mprj_datal = 0xAB510000;
-}
+	dma();
 
+	// reg_mprj_datal = 0xAB510000;
+
+}
