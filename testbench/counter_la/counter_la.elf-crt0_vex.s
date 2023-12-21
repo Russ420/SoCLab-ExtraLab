@@ -1,5 +1,5 @@
 # 0 "../../firmware/crt0_vex.S"
-# 1 "/home/ubuntu/SoCLab/course-lab_d/lab-sdram/testbench/counter_la//"
+# 1 "/home/test/caravel-soc_fpga-lab/dream_team/SoCLab-ExtraLab/testbench/counter_la//"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "../../firmware/crt0_vex.S"

@@ -6,7 +6,7 @@
 	.text
 .Ltext0:
 	.cfi_sections	.debug_frame
-	.file 0 "/home/ubuntu/SoCLab/course-lab_d/lab-sdram/testbench/counter_la" "counter_la.c"
+	.file 0 "/home/test/caravel-soc_fpga-lab/dream_team/SoCLab-ExtraLab/testbench/counter_la" "counter_la.c"
 	.align	2
 	.globl	putchar
 	.type	putchar, @function
@@ -114,7 +114,7 @@ print:
 main:
 .LFB318:
 	.file 2 "counter_la.c"
-	.loc 2 39 1 is_stmt 1
+	.loc 2 217 1 is_stmt 1
 	.cfi_startproc
 	addi	sp,sp,-16
 	.cfi_def_cfa_offset 16
@@ -122,197 +122,201 @@ main:
 	sw	s0,8(sp)
 	.cfi_offset 1, -4
 	.cfi_offset 8, -8
-	.loc 2 40 2
-	.loc 2 67 9
-	.loc 2 67 43 is_stmt 0
+	.loc 2 218 2
+	.loc 2 245 9
+	.loc 2 245 43 is_stmt 0
 	li	a5,637534208
 	li	a4,8192
 	addi	a3,a4,-2039
 	sw	a3,160(a5)
-	.loc 2 68 9 is_stmt 1
-	.loc 2 68 43 is_stmt 0
+	.loc 2 246 9 is_stmt 1
+	.loc 2 246 43 is_stmt 0
 	sw	a3,156(a5)
-	.loc 2 69 9 is_stmt 1
-	.loc 2 69 43 is_stmt 0
+	.loc 2 247 9 is_stmt 1
+	.loc 2 247 43 is_stmt 0
 	sw	a3,152(a5)
-	.loc 2 70 9 is_stmt 1
-	.loc 2 70 43 is_stmt 0
+	.loc 2 248 9 is_stmt 1
+	.loc 2 248 43 is_stmt 0
 	sw	a3,148(a5)
-	.loc 2 71 9 is_stmt 1
-	.loc 2 71 43 is_stmt 0
+	.loc 2 249 9 is_stmt 1
+	.loc 2 249 43 is_stmt 0
 	sw	a3,144(a5)
-	.loc 2 72 9 is_stmt 1
-	.loc 2 72 43 is_stmt 0
+	.loc 2 250 9 is_stmt 1
+	.loc 2 250 43 is_stmt 0
 	sw	a3,140(a5)
-	.loc 2 73 9 is_stmt 1
-	.loc 2 73 43 is_stmt 0
+	.loc 2 251 9 is_stmt 1
+	.loc 2 251 43 is_stmt 0
 	sw	a3,136(a5)
-	.loc 2 74 9 is_stmt 1
-	.loc 2 74 43 is_stmt 0
+	.loc 2 252 9 is_stmt 1
+	.loc 2 252 43 is_stmt 0
 	sw	a3,132(a5)
-	.loc 2 75 9 is_stmt 1
-	.loc 2 75 43 is_stmt 0
+	.loc 2 253 9 is_stmt 1
+	.loc 2 253 43 is_stmt 0
 	sw	a3,128(a5)
-	.loc 2 76 9 is_stmt 1
-	.loc 2 76 43 is_stmt 0
+	.loc 2 254 9 is_stmt 1
+	.loc 2 254 43 is_stmt 0
 	sw	a3,124(a5)
-	.loc 2 77 9 is_stmt 1
-	.loc 2 77 43 is_stmt 0
+	.loc 2 255 9 is_stmt 1
+	.loc 2 255 43 is_stmt 0
 	sw	a3,120(a5)
-	.loc 2 78 9 is_stmt 1
-	.loc 2 78 43 is_stmt 0
+	.loc 2 256 9 is_stmt 1
+	.loc 2 256 43 is_stmt 0
 	sw	a3,116(a5)
-	.loc 2 79 9 is_stmt 1
-	.loc 2 79 43 is_stmt 0
+	.loc 2 257 9 is_stmt 1
+	.loc 2 257 43 is_stmt 0
 	sw	a3,112(a5)
-	.loc 2 80 9 is_stmt 1
-	.loc 2 80 43 is_stmt 0
+	.loc 2 258 9 is_stmt 1
+	.loc 2 258 43 is_stmt 0
 	sw	a3,108(a5)
-	.loc 2 81 9 is_stmt 1
-	.loc 2 81 43 is_stmt 0
+	.loc 2 259 9 is_stmt 1
+	.loc 2 259 43 is_stmt 0
 	sw	a3,104(a5)
-	.loc 2 82 9 is_stmt 1
-	.loc 2 82 43 is_stmt 0
+	.loc 2 260 9 is_stmt 1
+	.loc 2 260 43 is_stmt 0
 	sw	a3,100(a5)
-	.loc 2 84 9 is_stmt 1
-	.loc 2 84 43 is_stmt 0
+	.loc 2 262 9 is_stmt 1
+	.loc 2 262 43 is_stmt 0
 	addi	a4,a4,-2040
 	sw	a4,96(a5)
-	.loc 2 85 9 is_stmt 1
-	.loc 2 85 43 is_stmt 0
+	.loc 2 263 9 is_stmt 1
+	.loc 2 263 43 is_stmt 0
 	sw	a4,92(a5)
-	.loc 2 86 9 is_stmt 1
-	.loc 2 86 43 is_stmt 0
+	.loc 2 264 9 is_stmt 1
+	.loc 2 264 43 is_stmt 0
 	sw	a4,88(a5)
-	.loc 2 87 9 is_stmt 1
-	.loc 2 87 43 is_stmt 0
+	.loc 2 265 9 is_stmt 1
+	.loc 2 265 43 is_stmt 0
 	sw	a4,84(a5)
-	.loc 2 88 9 is_stmt 1
-	.loc 2 88 43 is_stmt 0
+	.loc 2 266 9 is_stmt 1
+	.loc 2 266 43 is_stmt 0
 	sw	a4,80(a5)
-	.loc 2 89 9 is_stmt 1
-	.loc 2 89 43 is_stmt 0
+	.loc 2 267 9 is_stmt 1
+	.loc 2 267 43 is_stmt 0
 	sw	a4,76(a5)
-	.loc 2 90 9 is_stmt 1
-	.loc 2 90 43 is_stmt 0
+	.loc 2 268 9 is_stmt 1
+	.loc 2 268 43 is_stmt 0
 	sw	a4,72(a5)
-	.loc 2 91 9 is_stmt 1
-	.loc 2 91 43 is_stmt 0
+	.loc 2 269 9 is_stmt 1
+	.loc 2 269 43 is_stmt 0
 	sw	a4,68(a5)
-	.loc 2 92 9 is_stmt 1
-	.loc 2 92 43 is_stmt 0
+	.loc 2 270 9 is_stmt 1
+	.loc 2 270 43 is_stmt 0
 	sw	a4,64(a5)
-	.loc 2 93 9 is_stmt 1
-	.loc 2 93 43 is_stmt 0
+	.loc 2 271 9 is_stmt 1
+	.loc 2 271 43 is_stmt 0
 	sw	a4,56(a5)
-	.loc 2 94 9 is_stmt 1
-	.loc 2 94 43 is_stmt 0
+	.loc 2 272 9 is_stmt 1
+	.loc 2 272 43 is_stmt 0
 	sw	a4,52(a5)
-	.loc 2 95 9 is_stmt 1
-	.loc 2 95 43 is_stmt 0
+	.loc 2 273 9 is_stmt 1
+	.loc 2 273 43 is_stmt 0
 	sw	a4,48(a5)
-	.loc 2 96 9 is_stmt 1
-	.loc 2 96 43 is_stmt 0
+	.loc 2 274 9 is_stmt 1
+	.loc 2 274 43 is_stmt 0
 	sw	a4,44(a5)
-	.loc 2 97 9 is_stmt 1
-	.loc 2 97 43 is_stmt 0
+	.loc 2 275 9 is_stmt 1
+	.loc 2 275 43 is_stmt 0
 	sw	a4,40(a5)
-	.loc 2 98 9 is_stmt 1
-	.loc 2 98 43 is_stmt 0
+	.loc 2 276 9 is_stmt 1
+	.loc 2 276 43 is_stmt 0
 	sw	a4,36(a5)
-	.loc 2 100 9 is_stmt 1
-	.loc 2 100 43 is_stmt 0
+	.loc 2 278 9 is_stmt 1
+	.loc 2 278 43 is_stmt 0
 	sw	a3,60(a5)
-	.loc 2 104 2 is_stmt 1
-	.loc 2 104 50 is_stmt 0
+	.loc 2 282 2 is_stmt 1
+	.loc 2 282 50 is_stmt 0
 	li	a4,1
 	li	a3,-268410880
 	sw	a4,0(a3)
-	.loc 2 107 2 is_stmt 1
-	.loc 2 107 36 is_stmt 0
+	.loc 2 285 2 is_stmt 1
+	.loc 2 285 36 is_stmt 0
 	sw	a4,0(a5)
-	.loc 2 108 2 is_stmt 1
-	.loc 2 108 10 is_stmt 0
+	.loc 2 286 2 is_stmt 1
+	.loc 2 286 10 is_stmt 0
 	li	a3,637534208
 .L13:
-	.loc 2 108 43 is_stmt 1 discriminator 1
-	.loc 2 108 10 is_stmt 0 discriminator 1
+	.loc 2 286 43 is_stmt 1 discriminator 1
+	.loc 2 286 10 is_stmt 0 discriminator 1
 	lw	a5,0(a3)
-	.loc 2 108 43 discriminator 1
+	.loc 2 286 43 discriminator 1
 	beq	a5,a4,.L13
-	.loc 2 112 2 is_stmt 1
-	.loc 2 112 114 is_stmt 0
+	.loc 2 290 2 is_stmt 1
+	.loc 2 290 114 is_stmt 0
 	li	a5,-268423168
 	sw	zero,12(a5)
-	.loc 2 112 57
+	.loc 2 290 57
 	sw	zero,28(a5)
-	.loc 2 113 2 is_stmt 1
-	.loc 2 113 112 is_stmt 0
+	.loc 2 291 2 is_stmt 1
+	.loc 2 291 112 is_stmt 0
 	li	a4,-1
 	sw	a4,8(a5)
-	.loc 2 113 56
+	.loc 2 291 56
 	sw	a4,24(a5)
-	.loc 2 114 2 is_stmt 1
-	.loc 2 114 112 is_stmt 0
+	.loc 2 292 2 is_stmt 1
+	.loc 2 292 112 is_stmt 0
 	sw	zero,4(a5)
-	.loc 2 114 56
+	.loc 2 292 56
 	sw	zero,20(a5)
-	.loc 2 115 2 is_stmt 1
-	.loc 2 115 100 is_stmt 0
+	.loc 2 293 2 is_stmt 1
+	.loc 2 293 100 is_stmt 0
 	sw	zero,0(a5)
-	.loc 2 115 50
+	.loc 2 293 50
 	sw	zero,16(a5)
-	.loc 2 118 2 is_stmt 1
-	.loc 2 118 36 is_stmt 0
+	.loc 2 296 2 is_stmt 1
+	.loc 2 296 36 is_stmt 0
 	li	s0,637534208
 	li	a4,-1421869056
 	sw	a4,12(s0)
-	.loc 2 121 2 is_stmt 1
-	.loc 2 121 56 is_stmt 0
+	.loc 2 299 2 is_stmt 1
+	.loc 2 299 56 is_stmt 0
 	sw	zero,56(a5)
-	.loc 2 124 2 is_stmt 1
-	.loc 2 124 112 is_stmt 0
+	.loc 2 302 2 is_stmt 1
+	.loc 2 302 112 is_stmt 0
 	sw	zero,8(a5)
-	.loc 2 124 56
+	.loc 2 302 56
 	sw	zero,24(a5)
-	.loc 2 154 2 is_stmt 1
-	.loc 2 154 13 is_stmt 0
+	.loc 2 317 2 is_stmt 1
+	.loc 2 317 13 is_stmt 0
 	call	matmul
 .LVL10:
-	.loc 2 155 2 is_stmt 1
-	.loc 2 155 43 is_stmt 0
+	.loc 2 318 2 is_stmt 1
+	.loc 2 318 43 is_stmt 0
 	lw	a5,0(a0)
 	slli	a5,a5,16
-	.loc 2 155 36
+	.loc 2 318 36
 	sw	a5,12(s0)
-	.loc 2 156 2 is_stmt 1
-	.loc 2 156 47 is_stmt 0
+	.loc 2 319 2 is_stmt 1
+	.loc 2 319 47 is_stmt 0
 	lw	a5,4(a0)
 	slli	a5,a5,16
-	.loc 2 156 36
+	.loc 2 319 36
 	sw	a5,12(s0)
-	.loc 2 157 2 is_stmt 1
-	.loc 2 157 47 is_stmt 0
+	.loc 2 320 2 is_stmt 1
+	.loc 2 320 47 is_stmt 0
 	lw	a5,8(a0)
 	slli	a5,a5,16
-	.loc 2 157 36
+	.loc 2 320 36
 	sw	a5,12(s0)
-	.loc 2 158 2 is_stmt 1
-	.loc 2 158 47 is_stmt 0
+	.loc 2 321 2 is_stmt 1
+	.loc 2 321 47 is_stmt 0
 	lw	a5,12(a0)
 	slli	a5,a5,16
-	.loc 2 158 36
+	.loc 2 321 36
 	sw	a5,12(s0)
-	.loc 2 162 2 is_stmt 1
-	.loc 2 162 47 is_stmt 0
+	.loc 2 325 2 is_stmt 1
+	.loc 2 325 47 is_stmt 0
 	lw	a5,36(a0)
 	slli	a5,a5,16
-	.loc 2 162 36
+	.loc 2 325 36
 	sw	a5,12(s0)
-	.loc 2 163 2 is_stmt 1
-	call	dma
+	.loc 2 326 2 is_stmt 1
+	call	firPtr
 .LVL11:
-	.loc 2 167 1 is_stmt 0
+	.loc 2 331 2
+	.loc 2 331 36 is_stmt 0
+	li	a5,-1420754944
+	sw	a5,12(s0)
+	.loc 2 347 1
 	lw	ra,12(sp)
 	.cfi_restore 1
 	lw	s0,8(sp)
@@ -324,10 +328,10 @@ main:
 .LFE318:
 	.size	main, .-main
 .Letext0:
-	.file 3 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h"
+	.file 3 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.4byte	0x14a
+	.4byte	0x14b
 	.2byte	0x5
 	.byte	0x1
 	.byte	0x4
@@ -387,17 +391,17 @@ main:
 	.byte	0x7
 	.4byte	.LASF10
 	.byte	0x9
-	.string	"dma"
+	.4byte	.LASF16
 	.byte	0x2
-	.byte	0x19
+	.byte	0xcb
 	.byte	0xd
 	.4byte	0x86
 	.byte	0x3
 	.byte	0
 	.byte	0xa
-	.4byte	.LASF16
+	.4byte	.LASF17
 	.byte	0x2
-	.byte	0x18
+	.byte	0xca
 	.byte	0xd
 	.4byte	0x98
 	.4byte	0x98
@@ -408,23 +412,23 @@ main:
 	.byte	0xb
 	.4byte	.LASF12
 	.byte	0x2
-	.byte	0x26
+	.byte	0xd8
 	.byte	0x6
 	.4byte	.LFB318
 	.4byte	.LFE318-.LFB318
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0xe0
+	.4byte	0xe1
 	.byte	0xc
 	.string	"j"
 	.byte	0x2
-	.byte	0x28
+	.byte	0xda
 	.byte	0x6
 	.4byte	0x6a
 	.byte	0xd
 	.string	"tmp"
 	.byte	0x2
-	.byte	0x9a
+	.2byte	0x13d
 	.byte	0x7
 	.4byte	0x98
 	.4byte	.LLST2
@@ -436,7 +440,7 @@ main:
 	.4byte	0x78
 	.byte	0
 	.byte	0xe
-	.4byte	.LASF17
+	.4byte	.LASF18
 	.byte	0x1
 	.byte	0x1a
 	.byte	0x6
@@ -444,25 +448,25 @@ main:
 	.4byte	.LFE317-.LFB317
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x10d
+	.4byte	0x10e
 	.byte	0x5
 	.string	"p"
 	.byte	0x1a
 	.byte	0x18
-	.4byte	0x10d
+	.4byte	0x10e
 	.4byte	.LLST1
 	.byte	0x2
 	.4byte	.LVL8
-	.4byte	0x11e
+	.4byte	0x11f
 	.byte	0
 	.byte	0x4
-	.4byte	0x119
+	.4byte	0x11a
 	.byte	0x1
 	.byte	0x1
 	.byte	0x8
 	.4byte	.LASF11
 	.byte	0xf
-	.4byte	0x112
+	.4byte	0x113
 	.byte	0x10
 	.4byte	.LASF13
 	.byte	0x1
@@ -476,11 +480,11 @@ main:
 	.string	"c"
 	.byte	0x12
 	.byte	0x13
-	.4byte	0x112
+	.4byte	0x113
 	.4byte	.LLST0
 	.byte	0x11
 	.4byte	.LVL4
-	.4byte	0x11e
+	.4byte	0x11f
 	.byte	0x12
 	.byte	0x1
 	.byte	0x5a
@@ -595,7 +599,7 @@ main:
 	.byte	0x3f
 	.byte	0x19
 	.byte	0x3
-	.byte	0x8
+	.byte	0xe
 	.byte	0x3a
 	.byte	0xb
 	.byte	0x3b
@@ -677,7 +681,7 @@ main:
 	.byte	0x3a
 	.byte	0xb
 	.byte	0x3b
-	.byte	0xb
+	.byte	0x5
 	.byte	0x39
 	.byte	0xb
 	.byte	0x49
@@ -835,9 +839,11 @@ main:
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
+.LASF16:
+	.string	"firPtr"
 .LASF14:
 	.string	"GNU C17 12.1.0 -mabi=ilp32 -mtune=rocket -misa-spec=2.2 -march=rv32i -g -O1 -ffreestanding"
-.LASF16:
+.LASF17:
 	.string	"matmul"
 .LASF6:
 	.string	"unsigned char"
@@ -857,7 +863,7 @@ main:
 	.string	"long long int"
 .LASF11:
 	.string	"char"
-.LASF17:
+.LASF18:
 	.string	"print"
 .LASF3:
 	.string	"short int"
@@ -869,7 +875,7 @@ main:
 	.string	"signed char"
 	.section	.debug_line_str,"MS",@progbits,1
 .LASF1:
-	.string	"/home/ubuntu/SoCLab/course-lab_d/lab-sdram/testbench/counter_la"
+	.string	"/home/test/caravel-soc_fpga-lab/dream_team/SoCLab-ExtraLab/testbench/counter_la"
 .LASF0:
 	.string	"counter_la.c"
 	.ident	"GCC: (g1ea978e3066) 12.1.0"

@@ -1,6 +1,6 @@
 Archive member included to satisfy reference by file (symbol)
 
-/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
+/home/test/Desktop/opt/riscv/bin/../lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
                               counter_la.elf-matmul.o (__mulsi3)
 
 Memory Configuration
@@ -21,7 +21,7 @@ Linker script and memory map
 
                 0x0000000000000000                __DYNAMIC = 0x0
 
-.text           0x0000000010000000      0x398
+.text           0x0000000010000000      0x3a0
                 0x0000000010000000                _ftext = .
  *crt0*(.text)
  .text          0x0000000010000000      0x174 counter_la.elf-crt0_vex.o
@@ -33,27 +33,27 @@ Linker script and memory map
  .text          0x0000000010000174       0x28 counter_la.elf-isr.o
                 0x0000000010000174                isr
  .text          0x000000001000019c        0x0 counter_la.elf-matmul.o
- .text          0x000000001000019c      0x1d8 counter_la.elf-counter_la.o
+ .text          0x000000001000019c      0x1e0 counter_la.elf-counter_la.o
                 0x000000001000019c                putchar
                 0x00000000100001e8                print
                 0x0000000010000220                main
- .text          0x0000000010000374       0x24 /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
-                0x0000000010000374                __mulsi3
-                0x0000000010000398                _etext = .
+ .text          0x000000001000037c       0x24 /home/test/Desktop/opt/riscv/bin/../lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
+                0x000000001000037c                __mulsi3
+                0x00000000100003a0                _etext = .
 
-.rela.dyn       0x0000000010000398        0x0
- .rela.text     0x0000000010000398        0x0 counter_la.elf-crt0_vex.o
+.rela.dyn       0x00000000100003a0        0x0
+ .rela.text     0x00000000100003a0        0x0 counter_la.elf-crt0_vex.o
 
-.rodata         0x0000000010000398        0x0
-                0x0000000010000398                . = ALIGN (0x8)
- *fill*         0x0000000010000398        0x0 
-                0x0000000010000398                _frodata = .
+.rodata         0x00000000100003a0        0x0
+                0x00000000100003a0                . = ALIGN (0x8)
+ *fill*         0x00000000100003a0        0x0 
+                0x00000000100003a0                _frodata = .
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  *(.rodata1)
-                0x0000000010000398                . = ALIGN (0x8)
-                0x0000000010000398                _erodata = .
+                0x00000000100003a0                . = ALIGN (0x8)
+                0x00000000100003a0                _erodata = .
 
-.data           0x0000000000000000        0x8 load address 0x0000000010000398
+.data           0x0000000000000000        0x8 load address 0x00000000100003a0
                 0x0000000000000000                . = ALIGN (0x8)
                 0x0000000000000000                _fdata = .
  *(.data .data.* .gnu.linkonce.d.*)
@@ -61,7 +61,7 @@ Linker script and memory map
  .data          0x0000000000000000        0x0 counter_la.elf-isr.o
  .data          0x0000000000000000        0x0 counter_la.elf-matmul.o
  .data          0x0000000000000000        0x0 counter_la.elf-counter_la.o
- .data          0x0000000000000000        0x0 /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
+ .data          0x0000000000000000        0x0 /home/test/Desktop/opt/riscv/bin/../lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
  *(.data1)
                 0x0000000000000000                _gp = ALIGN (0x10)
  *(.sdata .sdata.* .gnu.linkonce.s.*)
@@ -71,7 +71,7 @@ Linker script and memory map
                 0x0000000000000008                . = ALIGN (0x8)
                 0x0000000000000008                _edata = .
 
-.bss            0x0000000000000008       0x50 load address 0x00000000100003a0
+.bss            0x0000000000000008       0x50 load address 0x00000000100003a8
                 0x0000000000000008                . = ALIGN (0x8)
                 0x0000000000000008                _fbss = .
  *(.dynsbss)
@@ -90,38 +90,38 @@ Linker script and memory map
  .bss           0x0000000000000014       0x40 counter_la.elf-matmul.o
                 0x0000000000000014                result
  .bss           0x0000000000000054        0x0 counter_la.elf-counter_la.o
- .bss           0x0000000000000054        0x0 /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
+ .bss           0x0000000000000054        0x0 /home/test/Desktop/opt/riscv/bin/../lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
  *(COMMON)
                 0x0000000000000058                . = ALIGN (0x8)
  *fill*         0x0000000000000054        0x4 
                 0x0000000000000058                _ebss = .
                 0x0000000000000058                _end = .
 
-.mprjram        0x0000000038000000      0x138 load address 0x00000000100003a0
+.mprjram        0x0000000038000000      0x14c load address 0x00000000100003a8
                 0x0000000038000000                . = ALIGN (0x8)
                 0x0000000038000000                _fsram = .
- .mprjram       0x0000000038000000      0x138 counter_la.elf-matmul.o
+ .mprjram       0x0000000038000000      0x14c counter_la.elf-matmul.o
                 0x0000000038000000                matmul
-                0x00000000380000fc                dma
+                0x00000000380000fc                firPtr
 
-.adder          0x0000000038000200       0x80 load address 0x00000000100004d8
+.adder          0x0000000038000200       0x80 load address 0x00000000100004f4
                 0x0000000038000200                . = ALIGN (0x8)
                 0x0000000038000200                _fadderram = .
  .adder         0x0000000038000200       0x80 counter_la.elf-matmul.o
                 0x0000000038000200                A
                 0x0000000038000240                B
                 0x0000000000000600                PROVIDE (_fstack = (ORIGIN (dff2) + LENGTH (dff2)))
-                0x0000000010000398                PROVIDE (_fdata_rom = LOADADDR (.data))
+                0x00000000100003a0                PROVIDE (_fdata_rom = LOADADDR (.data))
                 [!provide]                        PROVIDE (_edata_rom = (LOADADDR (.data) + SIZEOF (.data)))
-                0x0000000038000138                PROVIDE (_esram = (ORIGIN (mprjram) + SIZEOF (.mprjram)))
-                0x00000000100003a0                PROVIDE (_esram_rom = LOADADDR (.mprjram))
+                0x000000003800014c                PROVIDE (_esram = (ORIGIN (mprjram) + SIZEOF (.mprjram)))
+                0x00000000100003a8                PROVIDE (_esram_rom = LOADADDR (.mprjram))
                 0x0000000038000280                PROVIDE (_eadderram = (ORIGIN (adder) + SIZEOF (.adder)))
-                0x00000000100004d8                PROVIDE (_eadderram_rom = LOADADDR (.adder))
+                0x00000000100004f4                PROVIDE (_eadderram_rom = LOADADDR (.adder))
 LOAD counter_la.elf-crt0_vex.o
 LOAD counter_la.elf-isr.o
 LOAD counter_la.elf-matmul.o
 LOAD counter_la.elf-counter_la.o
-LOAD /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a
+LOAD /home/test/Desktop/opt/riscv/bin/../lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a
 OUTPUT(counter_la.elf elf32-littleriscv)
 
 .riscv.attributes
@@ -135,7 +135,7 @@ OUTPUT(counter_la.elf elf32-littleriscv)
  .riscv.attributes
                 0x000000000000005a       0x1c counter_la.elf-counter_la.o
  .riscv.attributes
-                0x0000000000000076       0x1a /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
+                0x0000000000000076       0x1a /home/test/Desktop/opt/riscv/bin/../lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
 
 .comment        0x0000000000000000       0x1b
  .comment       0x0000000000000000       0x1b counter_la.elf-isr.o
@@ -143,42 +143,42 @@ OUTPUT(counter_la.elf elf32-littleriscv)
  .comment       0x000000000000001b       0x1c counter_la.elf-matmul.o
  .comment       0x000000000000001b       0x1c counter_la.elf-counter_la.o
 
-.debug_line     0x0000000000000000      0xa57
+.debug_line     0x0000000000000000      0xa6c
  .debug_line    0x0000000000000000      0x23a counter_la.elf-crt0_vex.o
  .debug_line    0x000000000000023a       0xb3 counter_la.elf-isr.o
- .debug_line    0x00000000000002ed      0x1eb counter_la.elf-matmul.o
- .debug_line    0x00000000000004d8      0x505 counter_la.elf-counter_la.o
- .debug_line    0x00000000000009dd       0x7a /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
+ .debug_line    0x00000000000002ed      0x1f1 counter_la.elf-matmul.o
+ .debug_line    0x00000000000004de      0x514 counter_la.elf-counter_la.o
+ .debug_line    0x00000000000009f2       0x7a /home/test/Desktop/opt/riscv/bin/../lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
 
 .debug_line_str
-                0x0000000000000000      0x185
+                0x0000000000000000      0x1a7
  .debug_line_str
-                0x0000000000000000       0x5a counter_la.elf-crt0_vex.o
+                0x0000000000000000       0x6a counter_la.elf-crt0_vex.o
  .debug_line_str
-                0x000000000000005a       0x62 counter_la.elf-isr.o
-                                         0xfd (size before relaxing)
+                0x000000000000006a       0x74 counter_la.elf-isr.o
+                                        0x12f (size before relaxing)
  .debug_line_str
-                0x00000000000000bc       0x21 counter_la.elf-matmul.o
-                                        0x105 (size before relaxing)
+                0x00000000000000de       0x21 counter_la.elf-matmul.o
+                                        0x137 (size before relaxing)
  .debug_line_str
-                0x00000000000000dd       0x14 counter_la.elf-counter_la.o
-                                        0x100 (size before relaxing)
+                0x00000000000000ff       0x14 counter_la.elf-counter_la.o
+                                        0x132 (size before relaxing)
  .debug_line_str
-                0x00000000000000f1       0x94 /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
+                0x0000000000000113       0x94 /home/test/Desktop/opt/riscv/bin/../lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
 
-.debug_info     0x0000000000000000      0x410
+.debug_info     0x0000000000000000      0x426
  .debug_info    0x0000000000000000       0x25 counter_la.elf-crt0_vex.o
  .debug_info    0x0000000000000025       0xdc counter_la.elf-isr.o
- .debug_info    0x0000000000000101      0x192 counter_la.elf-matmul.o
- .debug_info    0x0000000000000293      0x14e counter_la.elf-counter_la.o
- .debug_info    0x00000000000003e1       0x2f /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
+ .debug_info    0x0000000000000101      0x1a7 counter_la.elf-matmul.o
+ .debug_info    0x00000000000002a8      0x14f counter_la.elf-counter_la.o
+ .debug_info    0x00000000000003f7       0x2f /home/test/Desktop/opt/riscv/bin/../lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
 
-.debug_abbrev   0x0000000000000000      0x2e8
+.debug_abbrev   0x0000000000000000      0x2fb
  .debug_abbrev  0x0000000000000000       0x14 counter_la.elf-crt0_vex.o
  .debug_abbrev  0x0000000000000014       0xa2 counter_la.elf-isr.o
- .debug_abbrev  0x00000000000000b6      0x100 counter_la.elf-matmul.o
- .debug_abbrev  0x00000000000001b6      0x111 counter_la.elf-counter_la.o
- .debug_abbrev  0x00000000000002c7       0x21 /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
+ .debug_abbrev  0x00000000000000b6      0x113 counter_la.elf-matmul.o
+ .debug_abbrev  0x00000000000001c9      0x111 counter_la.elf-counter_la.o
+ .debug_abbrev  0x00000000000002da       0x21 /home/test/Desktop/opt/riscv/bin/../lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
 
 .debug_aranges  0x0000000000000000       0xa8
  .debug_aranges
@@ -190,17 +190,17 @@ OUTPUT(counter_la.elf elf32-littleriscv)
  .debug_aranges
                 0x0000000000000068       0x20 counter_la.elf-counter_la.o
  .debug_aranges
-                0x0000000000000088       0x20 /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
+                0x0000000000000088       0x20 /home/test/Desktop/opt/riscv/bin/../lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
 
-.debug_str      0x0000000000000000      0x21a
- .debug_str     0x0000000000000000       0x66 counter_la.elf-crt0_vex.o
- .debug_str     0x0000000000000066       0xce counter_la.elf-isr.o
+.debug_str      0x0000000000000000      0x231
+ .debug_str     0x0000000000000000       0x76 counter_la.elf-crt0_vex.o
+ .debug_str     0x0000000000000076       0xce counter_la.elf-isr.o
                                         0x107 (size before relaxing)
- .debug_str     0x0000000000000134       0x3f counter_la.elf-matmul.o
-                                        0x127 (size before relaxing)
- .debug_str     0x0000000000000173       0x13 counter_la.elf-counter_la.o
-                                        0x107 (size before relaxing)
- .debug_str     0x0000000000000186       0x94 /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
+ .debug_str     0x0000000000000144       0x46 counter_la.elf-matmul.o
+                                        0x12e (size before relaxing)
+ .debug_str     0x000000000000018a       0x13 counter_la.elf-counter_la.o
+                                        0x10e (size before relaxing)
+ .debug_str     0x000000000000019d       0x94 /home/test/Desktop/opt/riscv/bin/../lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
                                          0xa9 (size before relaxing)
 
 .debug_loclists

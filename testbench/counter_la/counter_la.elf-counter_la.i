@@ -1,17 +1,17 @@
 # 0 "counter_la.c"
-# 1 "/home/ubuntu/SoCLab/course-lab_d/lab-sdram/testbench/counter_la//"
+# 1 "/home/test/caravel-soc_fpga-lab/dream_team/SoCLab-ExtraLab/testbench/counter_la//"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "counter_la.c"
-# 19 "counter_la.c"
+# 198 "counter_la.c"
 # 1 "../../firmware/defs.h" 1
 # 21 "../../firmware/defs.h"
-# 1 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 1 3 4
-# 11 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 3 4
-# 1 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 1 3 4
-# 34 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 3 4
+# 1 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 1 3 4
+# 11 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 3 4
+# 1 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 1 3 4
+# 34 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 3 4
 
-# 34 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 3 4
+# 34 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 3 4
 typedef signed char int8_t;
 
 
@@ -71,9 +71,9 @@ typedef unsigned int uintptr_t;
 
 typedef long long int intmax_t;
 typedef long long unsigned int uintmax_t;
-# 12 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 2 3 4
+# 12 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 2 3 4
 # 22 "../../firmware/defs.h" 2
-# 1 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdbool.h" 1 3 4
+# 1 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdbool.h" 1 3 4
 # 23 "../../firmware/defs.h" 2
 
 # 1 "../../firmware/csr.h" 1
@@ -1595,7 +1595,7 @@ extern uint32_t sram;
 
 extern uint32_t flashio_worker_begin;
 extern uint32_t flashio_worker_end;
-# 20 "counter_la.c" 2
+# 199 "counter_la.c" 2
 # 1 "../../firmware/stub.c" 1
 # 18 "../../firmware/stub.c"
 void putchar(char c)
@@ -1611,17 +1611,16 @@ void print(const char *p)
  while (*p)
   putchar(*(p++));
 }
-# 21 "counter_la.c" 2
-
+# 200 "counter_la.c" 2
 
 
 extern int* matmul();
-extern void dma();
-# 38 "counter_la.c"
+extern void firPtr();
+# 216 "counter_la.c"
 void main()
 {
  int j;
-# 67 "counter_la.c"
+# 245 "counter_la.c"
         (*(volatile uint32_t*)0x260000a0) = 0x1809;
         (*(volatile uint32_t*)0x2600009c) = 0x1809;
         (*(volatile uint32_t*)0x26000098) = 0x1809;
@@ -1680,7 +1679,7 @@ void main()
 
 
  (*(volatile uint32_t*) ((0xf0000000L + 0x3010L) + 8)) = (*(volatile uint32_t*) ((0xf0000000L + 0x3000L) + 8)) = 0x00000000;
-# 154 "counter_la.c"
+# 317 "counter_la.c"
  int *tmp = matmul();
  (*(volatile uint32_t*)0x2600000c) = *tmp << 16;
  (*(volatile uint32_t*)0x2600000c) = *(tmp+1) << 16;
@@ -1690,8 +1689,11 @@ void main()
 
 
  (*(volatile uint32_t*)0x2600000c) = *(tmp+9) << 16;
- dma();
+ firPtr();
 
 
 
+
+ (*(volatile uint32_t*)0x2600000c) = 0xAB510000;
+# 347 "counter_la.c"
 }
