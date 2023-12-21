@@ -16,15 +16,19 @@ int* __attribute__ ( ( section ( ".mprjram" ) ) ) matmul()
 			result[(i*SIZE) + j] = sum;
 		}
 	}
+
 	return result;
 }
 
-void __attribute__ ( ( section ( ".mprjram" ) ) ) dma() {
-	fir_ptr = (volatile uint32_t*)fir_addr;
-	mat_ptr = (volatile uint32_t*)mat_addr;
-
-	// dma test
-	*fir_ptr = 0x0000007c;
-	*fir_ptr = 0x007c007c;
-	*fir_ptr = 0x1468007c;
+void __attribute__ ( ( section ( ".mprjram" ) ) ) firPtr()
+{
+	volatile uint32_t *fir_ptr = (volatile uint32_t *)0x36000000;
+	*fir_ptr = 0x407c002c;
+	*fir_ptr = 0x00100054;
+	*fir_ptr = 0x003c407c;
+	*fir_ptr = 0x143c687c;
+	*fir_ptr = 0x043c687c;
+	*fir_ptr = 0x1c3c087c;
 }
+
+

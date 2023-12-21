@@ -1,17 +1,17 @@
 # 0 "../../firmware/matmul.c"
-# 1 "/home/ubuntu/SoCLab/course-lab_d/lab-sdram/testbench/counter_la//"
+# 1 "/home/test/caravel-soc_fpga-lab/dream_team/SoCLab-ExtraLab/testbench/counter_la//"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "../../firmware/matmul.c"
 # 1 "../../firmware/matmul.h" 1
 
 
-# 1 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 1 3 4
-# 11 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 3 4
-# 1 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 1 3 4
-# 34 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 3 4
+# 1 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 1 3 4
+# 11 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 3 4
+# 1 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 1 3 4
+# 34 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 3 4
 
-# 34 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 3 4
+# 34 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 3 4
 typedef signed char int8_t;
 
 
@@ -71,7 +71,7 @@ typedef unsigned int uintptr_t;
 
 typedef long long int intmax_t;
 typedef long long unsigned int uintmax_t;
-# 12 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 2 3 4
+# 12 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 2 3 4
 # 4 "../../firmware/matmul.h" 2
 
 
@@ -111,16 +111,17 @@ int* __attribute__ ( ( section ( ".mprjram" ) ) ) matmul()
    result[(i*4) + j] = sum;
   }
  }
+
  return result;
 }
 
-void __attribute__ ( ( section ( ".mprjram" ) ) ) dma() {
-
- fir_ptr = (volatile uint32_t*)fir_addr;
- mat_ptr = (volatile uint32_t*)mat_addr;
-
-
- *fir_ptr = 0x0000007c;
- *fir_ptr = 0x007c007c;
- *fir_ptr = 0x1468007c;
+void __attribute__ ( ( section ( ".mprjram" ) ) ) firPtr()
+{
+ volatile uint32_t *fir_ptr = (volatile uint32_t *)0x36000000;
+ *fir_ptr = 0x407c002c;
+ *fir_ptr = 0x00100054;
+ *fir_ptr = 0x003c407c;
+ *fir_ptr = 0x143c687c;
+ *fir_ptr = 0x043c687c;
+ *fir_ptr = 0x1c3c087c;
 }

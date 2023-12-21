@@ -1,4 +1,4 @@
-`define CPU_WRITE 8'h30
+`define CPU_WRITE 8'h36
 
 module DMA #(
     parameter DATA_WIDTH = 32,
@@ -70,6 +70,7 @@ reg  [31:0] acc_data_w, acc_data_r;
 reg flag_w, flag_r;
 //
 wire empty_wr = cpu_write & o_fifo_empty;
+reg  ins_start;
 reg  [INS_ADDR-1:0] base_addr_w, base_addr_r;
 reg  [INS_ADDR-1:0] end_addr_w, end_addr_r;
 
@@ -91,7 +92,7 @@ assign dram_fun_sel   = dram_fun_sel_r;
 assign dram_wbs_cyc_i = dram_wbs_cyc_r;
 assign dram_wbs_stb_i = dram_wbs_stb_r;
 assign dram_wbs_we_i  = dram_wbs_we_r;
-assign dram_wbs_adr_i = (ps == READ) ? {10'h1E0, 12'd0, 2'd2, base_addr_r} : 32'd0;
+assign dram_wbs_adr_i = (ins_start) ? {10'h1E0, 12'd0, 2'd2, base_addr_r} : 32'd0;
 assign dram_send_done = ((base_addr_r == end_addr_r) && dram_burst_en_o);
 // ACC
 assign acc_data_i = acc_data_r;
@@ -121,7 +122,7 @@ FIFO#(
 always @(*) begin
     case(ps)
         IDLE: begin
-            if(empty_wr | ins_cnt_r) begin
+            if((empty_wr || ins_cnt_r) && !dram_burst_en_o) begin
                 ns = READ;
             end else if(not_empty) begin
                 ns = FETCH;
@@ -220,7 +221,12 @@ always @(*) begin
     dram_wbs_we_w  = 1'b0;
     case(ps)
         READ: begin
-            if(!flag_r && !dram_burst_en_o) begin
+            // if(!flag_r && !dram_burst_en_o) begin
+            //     dram_wbs_stb_w = 1'b1;
+            //     dram_wbs_cyc_w = 1'b1;
+            //     dram_wbs_we_w  = 1'b0;
+            // end
+            if(!dram_burst_en_o) begin
                 dram_wbs_stb_w = 1'b1;
                 dram_wbs_cyc_w = 1'b1;
                 dram_wbs_we_w  = 1'b0;
@@ -311,6 +317,29 @@ always @(posedge wb_clk_i or posedge wb_rst_i) begin
     end
 end
 
+always @(posedge wb_clk_i or posedge wb_rst_i) begin
+    if(wb_rst_i) begin
+        ins_start <= 1'b0;
+    end else begin
+        if(cpu_checkBit == `CPU_WRITE) begin
+            ins_start <= 1'b1;
+        end
+    end
+end
+
+// always @(posedge wb_clk_i or posedge wb_rst_i) begin
+//     if(wb_rst_i) begin
+//         dram_wbs_adr_i <= 32'd0;
+//     end else begin
+//         if(ps == READ) begin
+//             if(!flag_r) begin
+//                 dram_wbs_adr_i <= {10'h1E0, 12'd0, 2'd2, base_addr_r}; 
+//             end else begin
+//                 dram_wbs_adr_i <= 32'd0;
+//             end
+//         end
+//     end
+// end
 
 //=============================================================
 

@@ -191,7 +191,21 @@ module counter_la_tb;
 			end
 			begin
 				$display("DMA started");
-				wait(checkbits == 16'h000A); $display("dma address from 0x20 to 0x80");
+				// wait(checkbits == 16'h000A); $display("dma address from 0x20 to 0x80");
+				wait(checkbits == 16'hAB51);
+				$display("LA Test 2 passed");
+				wait(checkbits == 16'h6010);
+				$display("write 1");
+				wait(checkbits == 16'h7020);
+				$display("write 2");
+				wait(checkbits == 16'h7030);
+				$display("write 3");
+				wait(checkbits == 16'h7040);
+				$display("write 4");
+				wait(checkbits == 16'h7050);
+				$display("write 5");
+				wait(checkbits == 16'h7060);
+				$display("write 6");
 				$display("DMA passed");
 			end
 		join

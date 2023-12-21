@@ -4,9 +4,9 @@ riscv32-unknown-elf-gcc -Wl,--no-warn-rwx-segments -g \
 	--save-temps \
 	-Xlinker -Map=output.map \
 	-I../../firmware \
+	-O1\
 	-march=rv32i -mabi=ilp32 -D__vexriscv__ \
 	-Wl,-Bstatic,-T,../../firmware/sections.lds,--strip-discarded \
-	-O1\
 	-ffreestanding -nostdlib -o counter_la.elf ../../firmware/crt0_vex.S ../../firmware/isr.c ../../firmware/matmul.c counter_la.c -lgcc
 # -nostartfiles	
 riscv32-unknown-elf-objcopy -O verilog counter_la.elf counter_la.hex
