@@ -1,4 +1,4 @@
-`define CPU_WRITE 8'h36
+`define CPU_WRITE 8'h30
 
 module DMA #(
     parameter DATA_WIDTH = 32,
@@ -220,17 +220,17 @@ always @(*) begin
     dram_wbs_cyc_w = 1'b0;
     dram_wbs_we_w  = 1'b0;
     case(ps)
-        READ: begin
+        READ, RESEND: begin
             // if(!flag_r && !dram_burst_en_o) begin
             //     dram_wbs_stb_w = 1'b1;
             //     dram_wbs_cyc_w = 1'b1;
             //     dram_wbs_we_w  = 1'b0;
             // end
-            if(!dram_burst_en_o) begin
-                dram_wbs_stb_w = 1'b1;
-                dram_wbs_cyc_w = 1'b1;
-                dram_wbs_we_w  = 1'b0;
-            end
+            // if(!dram_burst_en_o) begin
+            dram_wbs_stb_w = 1'b1;
+            dram_wbs_cyc_w = 1'b1;
+            dram_wbs_we_w  = 1'b0;
+            // end
         end
         default: begin
             dram_wbs_stb_w = 1'b0;

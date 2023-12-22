@@ -165,37 +165,39 @@ firPtr:
 	.loc 1 25 2
 .LVL10:
 	.loc 1 26 2
-	.loc 1 26 11 is_stmt 0
-	li	a5,905969664
+	.loc 1 27 2
+	.loc 1 27 11 is_stmt 0
+	li	a5,805306368
 	li	a4,1081868288
 	addi	a4,a4,44
 	sw	a4,0(a5)
-	.loc 1 27 2 is_stmt 1
-	.loc 1 27 11 is_stmt 0
+	.loc 1 28 2 is_stmt 1
+	.loc 1 28 11 is_stmt 0
 	li	a4,1048576
 	addi	a4,a4,84
 	sw	a4,0(a5)
-	.loc 1 28 2 is_stmt 1
-	.loc 1 28 11 is_stmt 0
+	.loc 1 29 2 is_stmt 1
+	.loc 1 29 11 is_stmt 0
 	li	a4,3948544
 	addi	a4,a4,124
 	sw	a4,0(a5)
-	.loc 1 29 2 is_stmt 1
-	.loc 1 29 11 is_stmt 0
-	li	a4,339505152
-	addi	a4,a4,-1924
-	sw	a4,0(a5)
 	.loc 1 30 2 is_stmt 1
 	.loc 1 30 11 is_stmt 0
-	li	a4,71069696
+	li	a4,339505152
 	addi	a4,a4,-1924
 	sw	a4,0(a5)
 	.loc 1 31 2 is_stmt 1
 	.loc 1 31 11 is_stmt 0
+	li	a3,806354944
+	li	a4,71069696
+	addi	a4,a4,-1924
+	sw	a4,0(a3)
+	.loc 1 32 2 is_stmt 1
+	.loc 1 32 11 is_stmt 0
 	li	a4,473698304
 	addi	a4,a4,-1924
 	sw	a4,0(a5)
-	.loc 1 32 1
+	.loc 1 33 1
 	ret
 	.cfi_endproc
 .LFE1:
@@ -281,12 +283,12 @@ fir_addr:
 	.file 3 "/home/test/Desktop/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.4byte	0x1a3
+	.4byte	0x1af
 	.2byte	0x5
 	.byte	0x1
 	.byte	0x4
 	.4byte	.Ldebug_abbrev0
-	.byte	0x6
+	.byte	0x7
 	.4byte	.LASF17
 	.byte	0x1d
 	.4byte	.LASF0
@@ -318,13 +320,13 @@ fir_addr:
 	.byte	0x2
 	.byte	0x7
 	.4byte	.LASF7
-	.byte	0x7
+	.byte	0x8
 	.4byte	.LASF18
 	.byte	0x3
 	.byte	0x34
 	.byte	0x1b
 	.4byte	0x61
-	.byte	0x8
+	.byte	0x9
 	.4byte	0x50
 	.byte	0x1
 	.byte	0x4
@@ -334,7 +336,7 @@ fir_addr:
 	.byte	0x8
 	.byte	0x7
 	.4byte	.LASF9
-	.byte	0x9
+	.byte	0xa
 	.byte	0x4
 	.byte	0x5
 	.string	"int"
@@ -376,10 +378,10 @@ fir_addr:
 	.byte	0x5
 	.byte	0x3
 	.4byte	mat_addr
-	.byte	0xa
+	.byte	0xb
 	.4byte	0x6f
 	.4byte	0xd6
-	.byte	0xb
+	.byte	0xc
 	.4byte	0x76
 	.byte	0xf
 	.byte	0
@@ -405,7 +407,7 @@ fir_addr:
 	.byte	0x5
 	.byte	0x3
 	.4byte	result
-	.byte	0xc
+	.byte	0xd
 	.4byte	.LASF19
 	.byte	0x1
 	.byte	0x17
@@ -414,26 +416,29 @@ fir_addr:
 	.4byte	.LFE1-.LFB1
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x12a
-	.byte	0xd
+	.4byte	0x136
+	.byte	0x6
 	.4byte	.LASF11
-	.byte	0x1
 	.byte	0x19
-	.byte	0x15
 	.4byte	0x8e
-	.4byte	0x36000000
+	.4byte	0x30000000
+	.byte	0x6
+	.4byte	.LASF13
+	.byte	0x1a
+	.4byte	0x8e
+	.4byte	0x30100000
 	.byte	0
 	.byte	0xe
 	.4byte	.LASF20
 	.byte	0x1
 	.byte	0x3
 	.byte	0x33
-	.4byte	0x198
+	.4byte	0x1a4
 	.4byte	.LFB0
 	.4byte	.LFE0-.LFB0
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x198
+	.4byte	0x1a4
 	.byte	0x3
 	.string	"i"
 	.byte	0x5
@@ -469,7 +474,7 @@ fir_addr:
 	.byte	0
 	.byte	0x11
 	.4byte	.LVL4
-	.4byte	0x19d
+	.4byte	0x1a9
 	.byte	0
 	.byte	0x4
 	.4byte	0x6f
@@ -561,6 +566,25 @@ fir_addr:
 	.byte	0
 	.byte	0
 	.byte	0x6
+	.byte	0x34
+	.byte	0
+	.byte	0x3
+	.byte	0xe
+	.byte	0x3a
+	.byte	0x21
+	.byte	0x1
+	.byte	0x3b
+	.byte	0xb
+	.byte	0x39
+	.byte	0x21
+	.byte	0x15
+	.byte	0x49
+	.byte	0x13
+	.byte	0x1c
+	.byte	0x6
+	.byte	0
+	.byte	0
+	.byte	0x7
 	.byte	0x11
 	.byte	0x1
 	.byte	0x25
@@ -579,7 +603,7 @@ fir_addr:
 	.byte	0x17
 	.byte	0
 	.byte	0
-	.byte	0x7
+	.byte	0x8
 	.byte	0x16
 	.byte	0
 	.byte	0x3
@@ -594,14 +618,14 @@ fir_addr:
 	.byte	0x13
 	.byte	0
 	.byte	0
-	.byte	0x8
+	.byte	0x9
 	.byte	0x35
 	.byte	0
 	.byte	0x49
 	.byte	0x13
 	.byte	0
 	.byte	0
-	.byte	0x9
+	.byte	0xa
 	.byte	0x24
 	.byte	0
 	.byte	0xb
@@ -612,7 +636,7 @@ fir_addr:
 	.byte	0x8
 	.byte	0
 	.byte	0
-	.byte	0xa
+	.byte	0xb
 	.byte	0x1
 	.byte	0x1
 	.byte	0x49
@@ -621,7 +645,7 @@ fir_addr:
 	.byte	0x13
 	.byte	0
 	.byte	0
-	.byte	0xb
+	.byte	0xc
 	.byte	0x21
 	.byte	0
 	.byte	0x49
@@ -630,7 +654,7 @@ fir_addr:
 	.byte	0xb
 	.byte	0
 	.byte	0
-	.byte	0xc
+	.byte	0xd
 	.byte	0x2e
 	.byte	0x1
 	.byte	0x3f
@@ -653,23 +677,6 @@ fir_addr:
 	.byte	0x19
 	.byte	0x1
 	.byte	0x13
-	.byte	0
-	.byte	0
-	.byte	0xd
-	.byte	0x34
-	.byte	0
-	.byte	0x3
-	.byte	0xe
-	.byte	0x3a
-	.byte	0xb
-	.byte	0x3b
-	.byte	0xb
-	.byte	0x39
-	.byte	0xb
-	.byte	0x49
-	.byte	0x13
-	.byte	0x1c
-	.byte	0x6
 	.byte	0
 	.byte	0
 	.byte	0xe
