@@ -70,14 +70,16 @@ module user_proj_example #(
     output [2:0] irq,
 
     // dma
+    input dma_fun_sel,
     input dma_wbs_cyc_i,
     input dma_wbs_we_i,
     input dma_wbs_stb_i,
     input [31:0]dma_wbs_adr_i,
 
-    output dma_brust_valid
-
+    output dma_brust_valid,
+    output dma_wbs_ack_o
 );
+
     wire clk;
     wire rst, rst_n;
 
@@ -109,8 +111,10 @@ module user_proj_example #(
     
     assign valid = wbs_stb_i && wbs_cyc_i;
     assign ctrl_in_valid = wbs_we_i ? valid : ~ctrl_in_valid_q && valid;
+    wire dma_in_valid = dma_wbs_we_i ? dma_valid : ~dma_in_valid_q && dma_valid;
 
     assign wbs_ack_o = (wbs_we_i) ? ~ctrl_busy && valid : ctrl_out_valid; 
+    wire dma_wbs_ack_o = (dma_wbs_we_i) ? ~ctrl_busy && dma_valid : ctrl_out_valid; 
     //assign wbs_ack_o = (wbs_we_i) ? ~ctrl_busy && valid : ~wbs_we_i & wbs_cyc_i & wbs_stb_i; 
 
     assign bram_mask = wbs_sel_i & {4{wbs_we_i}};
@@ -147,14 +151,14 @@ module user_proj_example #(
 
     //wire [31:0] dma_wbs_adr_i;
     wire [22:0]dram_addr;
-    assign dram_addr = (dma_wbs_adr_i[31:23] == 9'hF0) ? dma_wbs_adr_i[22:0] : ctrl_addr;
+    assign dram_addr = (dma_wbs_adr_i[31:23] == 9'hF0 || wbs_adr_i[31:16] == 16'h3600) ? dma_wbs_adr_i[22:0] : ctrl_addr;
 
     //wire dma_wbs_we_i;
     wire dram_rw;
-    assign dram_rw = (dma_wbs_adr_i[31:23] == 9'hF0) ? dma_wbs_we_i : wbs_we_i;
+    assign dram_rw = (dma_wbs_adr_i[31:23] == 9'hF0 || wbs_adr_i[31:16] == 16'h3600) ? dma_wbs_we_i : wbs_we_i;
 
     wire dram_in_valid;
-    assign dram_in_valid = (dma_wbs_adr_i[31:23] == 9'hF0) ? dma_in_valid_q : ctrl_in_valid;
+    assign dram_in_valid = (dma_wbs_adr_i[31:23] == 9'hF0 || wbs_adr_i[31:16] == 16'h3600) ? dma_in_valid : ctrl_in_valid;
 
     //wire dma_wbs_cyc_i, dma_wbs_stb_i;
     
@@ -181,14 +185,8 @@ module user_proj_example #(
     assign dma_brust_valid = brust_valid;
     
     // cpu-wbs prefetch usage
-    wire cpu_wbs_read;
-    assign cpu_wbs_read = ~wbs_we_i && wbs_cyc_i && wbs_stb_i;
-    // dma-wbs prefetch usage
-    wire dma_wbs_read;
-    assign dma_wbs_read = ~dma_wbs_we_i & dma_wbs_cyc_i & dma_wbs_stb_i;
-    // sdram prefetch usage
     wire wbs_read;
-    assign wbs_read = cpu_wbs_read | dma_wbs_read;
+    assign wbs_read = ~wbs_we_i && wbs_cyc_i && wbs_stb_i;
 
     sdram_controller user_sdram_controller (
         .clk(clk),

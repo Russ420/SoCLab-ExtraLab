@@ -16,5 +16,18 @@ int* __attribute__ ( ( section ( ".mprjram" ) ) ) matmul()
 			result[(i*SIZE) + j] = sum;
 		}
 	}
+
 	return result;
+}
+
+void __attribute__ ( ( section ( ".mprjram" ) ) ) firPtr()
+{
+	volatile uint32_t *fir_addr = (volatile uint32_t *)0x30000000;
+	*fir_addr = 0x00001c3c;
+	*fir_addr = 0x00100054;
+	*fir_addr = 0x003c407c;
+	*fir_addr = 0x143c687c;
+	*fir_addr = 0x043c687c;
+	*fir_addr = 0x1c3c087c;
+
 }

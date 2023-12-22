@@ -77,26 +77,26 @@ typedef long long unsigned int uintmax_t;
 
 # 5 "../../firmware/dma.h"
 volatile uint32_t *inst_ptr;
-volatile uint32_t inst_addr = 0x30000000;
+volatile uint32_t inst_addr = 0x36000000;
 # 2 "../../firmware/dma.c" 2
 
-void __attribute__ ( ( section ( ".mprjram" ) ) ) dma(
-  uint32_t start, uint32_t end)
+inline void __attribute__ ( ( section ( ".mprjram" ) ) ) dma(
+    volatile uint32_t start, volatile uint32_t end)
 {
+    volatile uint32_t inst;
+    inst_ptr = (volatile uint32_t*)inst_addr;
 
 
-
-
-    uint32_t inst;
 
     inst = 0x00000000;
-
+    inst = inst + ((start & 0x000000ff) << 8);
+    inst = inst + ((start & 0x00000300) << 10);
     inst = inst + (end & 0x000000ff);
- inst = inst + (end & 0x00000300) << 12;
+    inst = inst + ((end & 0x00000300) << 8);
 
-    inst = inst + (start & 0x000000ff) << 8;
- inst = inst + (start & 0x00000300) << 16;
 
-    inst_ptr = (volatile uint32_t*)inst_addr;
+
     *inst_ptr = inst;
+
+
 }
