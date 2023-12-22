@@ -70,14 +70,22 @@ module user_proj_example #(
     output [2:0] irq,
 
     // dma
+<<<<<<< HEAD
     input dma_fun_sel,
+=======
+>>>>>>> 669efc15e101b3ce74c530a5c464d143a8c37426
     input dma_wbs_cyc_i,
     input dma_wbs_we_i,
     input dma_wbs_stb_i,
     input [31:0]dma_wbs_adr_i,
 
+<<<<<<< HEAD
     output dma_brust_valid,
     output dma_wbs_ack_o
+=======
+    output dma_brust_valid
+
+>>>>>>> 669efc15e101b3ce74c530a5c464d143a8c37426
 );
 
     wire clk;
@@ -151,6 +159,7 @@ module user_proj_example #(
 
     //wire [31:0] dma_wbs_adr_i;
     wire [22:0]dram_addr;
+<<<<<<< HEAD
     assign dram_addr = (dma_wbs_adr_i[31:23] == 9'hF0 || wbs_adr_i[31:16] == 16'h3600) ? dma_wbs_adr_i[22:0] : ctrl_addr;
 
     //wire dma_wbs_we_i;
@@ -159,6 +168,16 @@ module user_proj_example #(
 
     wire dram_in_valid;
     assign dram_in_valid = (dma_wbs_adr_i[31:23] == 9'hF0 || wbs_adr_i[31:16] == 16'h3600) ? dma_in_valid : ctrl_in_valid;
+=======
+    assign dram_addr = (dma_wbs_adr_i[31:23] == 9'hF0) ? dma_wbs_adr_i[22:0] : ctrl_addr;
+
+    //wire dma_wbs_we_i;
+    wire dram_rw;
+    assign dram_rw = (dma_wbs_adr_i[31:23] == 9'hF0) ? dma_wbs_we_i : wbs_we_i;
+
+    wire dram_in_valid;
+    assign dram_in_valid = (dma_wbs_adr_i[31:23] == 9'hF0) ? dma_in_valid_q : ctrl_in_valid;
+>>>>>>> 669efc15e101b3ce74c530a5c464d143a8c37426
 
     //wire dma_wbs_cyc_i, dma_wbs_stb_i;
     
@@ -185,8 +204,19 @@ module user_proj_example #(
     assign dma_brust_valid = brust_valid;
     
     // cpu-wbs prefetch usage
+<<<<<<< HEAD
     wire wbs_read;
     assign wbs_read = ~wbs_we_i && wbs_cyc_i && wbs_stb_i;
+=======
+    wire cpu_wbs_read;
+    assign cpu_wbs_read = ~wbs_we_i && wbs_cyc_i && wbs_stb_i;
+    // dma-wbs prefetch usage
+    wire dma_wbs_read;
+    assign dma_wbs_read = ~dma_wbs_we_i & dma_wbs_cyc_i & dma_wbs_stb_i;
+    // sdram prefetch usage
+    wire wbs_read;
+    assign wbs_read = cpu_wbs_read | dma_wbs_read;
+>>>>>>> 669efc15e101b3ce74c530a5c464d143a8c37426
 
     sdram_controller user_sdram_controller (
         .clk(clk),

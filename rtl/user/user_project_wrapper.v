@@ -178,6 +178,7 @@ user_proj_example onlyCPU(
     .irq(user_irq),
 
     // DMA
+<<<<<<< HEAD
     .dma_fun_sel    (dram_fun_sel),
     .dma_wbs_cyc_i  (dram_wbs_cyc_i),
     .dma_wbs_stb_i  (dram_wbs_stb_i),
@@ -212,6 +213,15 @@ DMA #(
     // ACC
     .acc_data_valid_i(acc_data_valid_i),
     .acc_data_i(acc_data_i)
+=======
+    .dma_wbs_cyc_i(wbs_cyc_i),
+    .dma_wbs_stb_i(wbs_stb_i),
+    .dma_wbs_we_i(wbs_we_i),
+    .dma_wbs_adr_i(wbs_adr_i),
+
+    .dma_brust_valid()
+
+>>>>>>> 669efc15e101b3ce74c530a5c464d143a8c37426
 );
 
 endmodule	// user_project_wrapper

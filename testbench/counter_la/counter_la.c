@@ -200,8 +200,12 @@
 
 //extern int adder();
 extern int* matmul();
+<<<<<<< HEAD
 extern void firPtr();
 //extern void dma();
+=======
+extern void dma();
+>>>>>>> 669efc15e101b3ce74c530a5c464d143a8c37426
 
 // --------------------------------------------------------
 
@@ -323,7 +327,10 @@ void main()
 	//print("\n");
 	//print("Monitor: Test 1 Passed\n\n");	// Makes simulation very long!
 	reg_mprj_datal = *(tmp+9) << 16;
+<<<<<<< HEAD
 	firPtr();
+=======
+>>>>>>> 669efc15e101b3ce74c530a5c464d143a8c37426
 
 	// dma test
 	//dma(0x380000200, 0x380000220);
