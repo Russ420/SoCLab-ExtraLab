@@ -1615,12 +1615,21 @@ void print(const char *p)
 
 
 extern int* matmul();
+<<<<<<< HEAD
 extern void firPtr();
 # 216 "counter_la.c"
 void main()
 {
  int j;
 # 245 "counter_la.c"
+=======
+extern void dma();
+# 36 "counter_la.c"
+void main()
+{
+ int j;
+# 65 "counter_la.c"
+>>>>>>> 669efc15e101b3ce74c530a5c464d143a8c37426
         (*(volatile uint32_t*)0x260000a0) = 0x1809;
         (*(volatile uint32_t*)0x2600009c) = 0x1809;
         (*(volatile uint32_t*)0x26000098) = 0x1809;
@@ -1679,7 +1688,11 @@ void main()
 
 
  (*(volatile uint32_t*) ((0xf0000000L + 0x3010L) + 8)) = (*(volatile uint32_t*) ((0xf0000000L + 0x3000L) + 8)) = 0x00000000;
+<<<<<<< HEAD
 # 317 "counter_la.c"
+=======
+# 137 "counter_la.c"
+>>>>>>> 669efc15e101b3ce74c530a5c464d143a8c37426
  int *tmp = matmul();
  (*(volatile uint32_t*)0x2600000c) = *tmp << 16;
  (*(volatile uint32_t*)0x2600000c) = *(tmp+1) << 16;
@@ -1689,7 +1702,10 @@ void main()
 
 
  (*(volatile uint32_t*)0x2600000c) = *(tmp+9) << 16;
+<<<<<<< HEAD
  firPtr();
+=======
+>>>>>>> 669efc15e101b3ce74c530a5c464d143a8c37426
 
 
 

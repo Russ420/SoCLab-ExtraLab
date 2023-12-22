@@ -38,10 +38,13 @@ counter_la_tb.uut.mprj.mprj.wbs_dat_i[31:0]
 counter_la_tb.uut.mprj.mprj.wbs_dat_o[31:0]
 @200
 -
+<<<<<<< HEAD
 -acc
 @22
 counter_la_tb.uut.mprj.DMA_inst.acc_data_i[31:0]
 counter_la_tb.uut.mprj.DMA_inst.acc_data_valid_i
+=======
+>>>>>>> 669efc15e101b3ce74c530a5c464d143a8c37426
 -dma-signal
 @22
 counter_la_tb.uut.mprj.mprj.dma_wbs_cyc_i
