@@ -122,7 +122,8 @@ FIFO#(
 always @(*) begin
     case(ps)
         IDLE: begin
-            if((empty_wr || ins_cnt_r) && !dram_burst_en_o) begin
+            //if((empty_wr || ins_cnt_r) && !dram_burst_en_o) begin
+            if((empty_wr) && !dram_burst_en_o) begin
                 ns = READ;
             end else if(not_empty) begin
                 ns = FETCH;
@@ -170,7 +171,7 @@ always @(*) begin
         default: flag_w = flag_r;
     endcase
     if(dram_send_done && ps == READ) begin
-        ins_cnt_w = ~ins_cnt_r;
+        ins_cnt_w = ins_cnt_r;
     end else begin
         ins_cnt_w = ins_cnt_r;
     end
@@ -187,6 +188,10 @@ always @(*) begin
                 base_addr_w = ins_buff_r[15:8];
                 end_addr_w  = ins_buff_r[7:0];
             end else if(empty_wr) begin
+                base_addr_w = cpu_wbs_dat_i[15:8];
+                end_addr_w  = cpu_wbs_dat_i[7:0];
+            end
+            if(empty_wr) begin
                 base_addr_w = cpu_wbs_dat_i[15:8];
                 end_addr_w  = cpu_wbs_dat_i[7:0];
             end

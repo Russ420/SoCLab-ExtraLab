@@ -6,7 +6,7 @@
 	.text
 .Ltext0:
 	.cfi_sections	.debug_frame
-	.file 0 "/home/ubuntu/SoCLab/course-lab_d/lab-sdram/testbench/counter_la" "../../firmware/isr.c"
+	.file 0 "/home/ubuntu/SoCLab/course-lab_d/two_dram/SoCLab-ExtraLab/testbench/counter_la" "../../firmware/isr.c"
 	.align	2
 	.globl	isr
 	.type	isr, @function
@@ -398,7 +398,7 @@ flag:
 	.string	"signed char"
 	.section	.debug_line_str,"MS",@progbits,1
 .LASF1:
-	.string	"/home/ubuntu/SoCLab/course-lab_d/lab-sdram/testbench/counter_la"
+	.string	"/home/ubuntu/SoCLab/course-lab_d/two_dram/SoCLab-ExtraLab/testbench/counter_la"
 .LASF0:
 	.string	"../../firmware/isr.c"
 	.ident	"GCC: (g1ea978e3066) 12.1.0"

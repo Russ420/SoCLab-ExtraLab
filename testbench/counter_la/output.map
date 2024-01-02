@@ -151,20 +151,20 @@ OUTPUT(counter_la.elf elf32-littleriscv)
  .debug_line    0x00000000000009f2       0x7a /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
 
 .debug_line_str
-                0x0000000000000000      0x185
+                0x0000000000000000      0x194
  .debug_line_str
-                0x0000000000000000       0x5a counter_la.elf-crt0_vex.o
+                0x0000000000000000       0x69 counter_la.elf-crt0_vex.o
  .debug_line_str
-                0x000000000000005a       0x62 counter_la.elf-isr.o
-                                         0xfd (size before relaxing)
+                0x0000000000000069       0x62 counter_la.elf-isr.o
+                                        0x11b (size before relaxing)
  .debug_line_str
-                0x00000000000000bc       0x21 counter_la.elf-matmul.o
-                                        0x105 (size before relaxing)
+                0x00000000000000cb       0x21 counter_la.elf-matmul.o
+                                        0x123 (size before relaxing)
  .debug_line_str
-                0x00000000000000dd       0x14 counter_la.elf-counter_la.o
-                                        0x100 (size before relaxing)
+                0x00000000000000ec       0x14 counter_la.elf-counter_la.o
+                                        0x11e (size before relaxing)
  .debug_line_str
-                0x00000000000000f1       0x94 /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
+                0x0000000000000100       0x94 /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
 
 .debug_info     0x0000000000000000      0x426
  .debug_info    0x0000000000000000       0x25 counter_la.elf-crt0_vex.o
@@ -192,15 +192,15 @@ OUTPUT(counter_la.elf elf32-littleriscv)
  .debug_aranges
                 0x0000000000000088       0x20 /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
 
-.debug_str      0x0000000000000000      0x221
- .debug_str     0x0000000000000000       0x66 counter_la.elf-crt0_vex.o
- .debug_str     0x0000000000000066       0xce counter_la.elf-isr.o
+.debug_str      0x0000000000000000      0x230
+ .debug_str     0x0000000000000000       0x75 counter_la.elf-crt0_vex.o
+ .debug_str     0x0000000000000075       0xce counter_la.elf-isr.o
                                         0x107 (size before relaxing)
- .debug_str     0x0000000000000134       0x46 counter_la.elf-matmul.o
+ .debug_str     0x0000000000000143       0x46 counter_la.elf-matmul.o
                                         0x12e (size before relaxing)
- .debug_str     0x000000000000017a       0x13 counter_la.elf-counter_la.o
+ .debug_str     0x0000000000000189       0x13 counter_la.elf-counter_la.o
                                         0x10e (size before relaxing)
- .debug_str     0x000000000000018d       0x94 /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
+ .debug_str     0x000000000000019c       0x94 /opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/libgcc.a(muldi3.o)
                                          0xa9 (size before relaxing)
 
 .debug_loclists

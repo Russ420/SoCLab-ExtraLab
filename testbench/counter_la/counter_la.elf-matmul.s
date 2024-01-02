@@ -6,7 +6,7 @@
 	.text
 .Ltext0:
 	.cfi_sections	.debug_frame
-	.file 0 "/home/ubuntu/SoCLab/course-lab_d/lab-sdram/testbench/counter_la" "../../firmware/matmul.c"
+	.file 0 "/home/ubuntu/SoCLab/course-lab_d/two_dram/SoCLab-ExtraLab/testbench/counter_la" "../../firmware/matmul.c"
 	.globl	__mulsi3
 	.section	.mprjram,"ax",@progbits
 	.align	2
@@ -887,7 +887,7 @@ fir_addr:
 	.string	"signed char"
 	.section	.debug_line_str,"MS",@progbits,1
 .LASF1:
-	.string	"/home/ubuntu/SoCLab/course-lab_d/lab-sdram/testbench/counter_la"
+	.string	"/home/ubuntu/SoCLab/course-lab_d/two_dram/SoCLab-ExtraLab/testbench/counter_la"
 .LASF0:
 	.string	"../../firmware/matmul.c"
 	.ident	"GCC: (g1ea978e3066) 12.1.0"

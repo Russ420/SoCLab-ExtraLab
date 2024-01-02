@@ -1,5 +1,5 @@
 # 0 "../../firmware/isr.c"
-# 1 "/home/ubuntu/SoCLab/course-lab_d/lab-sdram/testbench/counter_la//"
+# 1 "/home/ubuntu/SoCLab/course-lab_d/two_dram/SoCLab-ExtraLab/testbench/counter_la//"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "../../firmware/isr.c"
