@@ -84,18 +84,31 @@ data_loop:
   j data_loop
 data_done:
 
-adder_init:
-  la a0, _fadderram
-  la a1, _eadderram
-  la a2, _eadderram_rom
-adder_loop:
-  beq a0,a1,adder_done
+fir_init:
+  la a0, _ffir
+  la a1, _efir
+  la a2, _efir_rom
+fir_loop:
+  beq a0,a1,fir_done
   lw a3,0(a2)
   sw a3,0(a0)
   add a0,a0,4
   add a2,a2,4
-  j adder_loop
-adder_done:    
+  j fir_loop
+fir_done:    
+
+matmul_init:
+  la a0, _fmatmul
+  la a1, _ematmul
+  la a2, _ematmul_rom
+matmul_loop:
+  beq a0,a1,matmul_done
+  lw a3,0(a2)
+  sw a3,0(a0)
+  add a0,a0,4
+  add a2,a2,4
+  j matmul_loop
+matmul_done:    
 
 bss_init:
   la a0, _fbss

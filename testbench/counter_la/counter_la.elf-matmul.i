@@ -75,19 +75,14 @@ typedef long long unsigned int uintmax_t;
 # 4 "../../firmware/matmul.h" 2
 
 
-# 5 "../../firmware/matmul.h"
-volatile uint32_t *fir_ptr;
-volatile uint32_t fir_addr = 0x30000000;
-volatile uint32_t *mat_ptr;
-volatile uint32_t mat_addr = 0x30100000;
-
-
- int __attribute__ ( ( section ( ".adder" ) ) ) A[4*4] = {0, 1, 2, 3,
+ 
+# 6 "../../firmware/matmul.h"
+int __attribute__ ( ( section ( ".fir" ) ) ) A[4*4] = {0, 1, 2, 3,
    0, 1, 2, 3,
    0, 1, 2, 3,
    0, 1, 2, 3
  };
- int __attribute__ ( ( section ( ".adder" ) ) ) B[4*4] = {1, 2, 3, 4,
+ int __attribute__ ( ( section ( ".matmul" ) ) ) B[4*4] = {1, 2, 3, 4,
   5, 6, 7, 8,
   9, 10, 11, 12,
   13, 14, 15, 16
@@ -128,8 +123,8 @@ void __attribute__ ( ( section ( ".mprjram" ) ) ) firPtr()
 
  inst_ptr = (volatile uint32_t *)inst_addr;
  *inst_ptr = 0x00021c3c;
- *inst_ptr = 0x00060054;
- *inst_ptr = 0x00050040;
- *inst_ptr = 0x0002687c;
+ *inst_ptr = 0x00030054;
+ *inst_ptr = 0x00060040;
+ *inst_ptr = 0x0007687c;
 
 }

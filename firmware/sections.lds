@@ -15,7 +15,8 @@ MEMORY {
 	flash : ORIGIN = 0x10000000, LENGTH = 0x01000000
 	mprj : ORIGIN = 0x30000000, LENGTH = 0x00100000
 	mprjram : ORIGIN = 0x38000000, LENGTH = 0x00000200
-	adder : ORIGIN = 0x38000200, LENGTH = 0x00000100
+	fir : ORIGIN = 0x38000200, LENGTH = 0x00000100
+	matmul : ORIGIN = 0x38000300, LENGTH = 0x00000100
 	hk : ORIGIN = 0x26000000, LENGTH = 0x00100000
 	csr : ORIGIN = 0xf0000000, LENGTH = 0x00010000
 }
@@ -79,12 +80,19 @@ SECTIONS
 
 	} > mprjram AT > flash
 	
-	.adder :
+	.fir :
 	{
 		. = ALIGN(8);
-		_fadderram = .;
+		_ffir = .;
 
-	} > adder AT > flash
+	} > fir AT > flash
+	
+	.matmul :
+	{
+		. = ALIGN(8);
+		_fmatmul = .;
+
+	} > matmul AT > flash
 }
 
 PROVIDE(_fstack = ORIGIN(dff2) + LENGTH(dff2));
@@ -95,5 +103,8 @@ PROVIDE(_edata_rom = LOADADDR(.data) + SIZEOF(.data));
 PROVIDE(_esram = ORIGIN(mprjram) + SIZEOF(.mprjram));
 PROVIDE(_esram_rom = LOADADDR(.mprjram));
 
-PROVIDE(_eadderram = ORIGIN(adder) + SIZEOF(.adder));
-PROVIDE(_eadderram_rom = LOADADDR(.adder));
+PROVIDE(_efir = ORIGIN(fir) + SIZEOF(.fir));
+PROVIDE(_efir_rom = LOADADDR(.fir));
+
+PROVIDE(_ematmul = ORIGIN(matmul) + SIZEOF(.matmul));
+PROVIDE(_ematmul_rom = LOADADDR(.matmul));
