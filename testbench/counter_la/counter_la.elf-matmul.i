@@ -128,8 +128,8 @@ void __attribute__ ( ( section ( ".mprjram" ) ) ) firPtr()
 
  inst_ptr = (volatile uint32_t *)inst_addr;
  *inst_ptr = 0x00021c3c;
- *inst_ptr = 0x00020054;
- *inst_ptr = 0x00010040;
+ *inst_ptr = 0x00060054;
+ *inst_ptr = 0x00050040;
  *inst_ptr = 0x0002687c;
 
 }

@@ -108,7 +108,8 @@ FIFO#(
 )fifo_inst(
     .clk(wb_clk_i),
     .rst(wb_rst_i),
-    .i_data({cpu_wbs_adr_i[20], cpu_wbs_dat_i}),
+    //.i_data({cpu_wbs_adr_i[20], cpu_wbs_dat_i}),
+    .i_data({cpu_wbs_dat_i[18], cpu_wbs_dat_i}),
     .write_en(i_write_en),
     .read_en(i_read_en),
     .full(o_fifo_full),
@@ -194,11 +195,13 @@ always @(*) begin
                 base_addr_w = cpu_wbs_dat_i[15:8];
                 end_addr_w  = cpu_wbs_dat_i[7:0];
                 dram_bank_w = cpu_wbs_dat_i[17:16];
+                dram_fun_sel_w = cpu_wbs_dat_i[18];
             end
             if(empty_wr) begin
                 base_addr_w = cpu_wbs_dat_i[15:8];
                 end_addr_w  = cpu_wbs_dat_i[7:0];
                 dram_bank_w = cpu_wbs_dat_i[17:16];
+                dram_fun_sel_w = cpu_wbs_dat_i[18];
             end
             //if(empty_wr) begin
             //    dram_fun_sel_w = cpu_wbs_adr_i[20];
@@ -210,7 +213,8 @@ always @(*) begin
                 base_addr_w = o_fifo_data[15:8];
                 end_addr_w  = o_fifo_data[7:0];
                 dram_bank_w = o_fifo_data[17:16];
-                dram_fun_sel_w = o_fifo_data[DATA_WIDTH];
+                //dram_fun_sel_w = o_fifo_data[DATA_WIDTH];
+                dram_fun_sel_w = o_fifo_data[18];
                 ins_buff_w = o_fifo_data[31-:16];
             end
         end

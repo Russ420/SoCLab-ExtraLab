@@ -177,13 +177,13 @@ firPtr:
 	.loc 1 29 2 is_stmt 1
 	lw	a3,%lo(inst_ptr)(a5)
 	.loc 1 29 12 is_stmt 0
-	li	a4,131072
+	li	a4,393216
 	addi	a4,a4,84
 	sw	a4,0(a3)
 	.loc 1 30 2 is_stmt 1
 	lw	a3,%lo(inst_ptr)(a5)
 	.loc 1 30 12 is_stmt 0
-	li	a4,65536
+	li	a4,327680
 	addi	a4,a4,64
 	sw	a4,0(a3)
 	.loc 1 31 2 is_stmt 1
