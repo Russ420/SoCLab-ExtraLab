@@ -3,5 +3,5 @@
 #include <stdint.h>
 
 volatile uint32_t *inst_ptr;
-volatile uint32_t inst_addr = 0x30000306;
+volatile uint32_t inst_addr = 0x30000678;
 #endif

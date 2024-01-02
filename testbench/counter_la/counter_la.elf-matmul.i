@@ -94,6 +94,14 @@ volatile uint32_t mat_addr = 0x30100000;
  };
  int result[4*4];
 # 2 "../../firmware/matmul.c" 2
+# 1 "../../firmware/dma.h" 1
+
+
+
+
+volatile uint32_t *inst_ptr;
+volatile uint32_t inst_addr = 0x30000678;
+# 3 "../../firmware/matmul.c" 2
 
 int* __attribute__ ( ( section ( ".mprjram" ) ) ) matmul()
 {
@@ -117,12 +125,11 @@ int* __attribute__ ( ( section ( ".mprjram" ) ) ) matmul()
 
 void __attribute__ ( ( section ( ".mprjram" ) ) ) firPtr()
 {
- volatile uint32_t *fir_addr = (volatile uint32_t *)0x30000000;
- *fir_addr = 0x00001c3c;
- *fir_addr = 0x00100054;
- *fir_addr = 0x003c407c;
- *fir_addr = 0x143c687c;
- *fir_addr = 0x043c687c;
- *fir_addr = 0x1c3c087c;
+
+ inst_ptr = (volatile uint32_t *)inst_addr;
+ *inst_ptr = 0x00021c3c;
+ *inst_ptr = 0x00020054;
+ *inst_ptr = 0x00010040;
+ *inst_ptr = 0x0002687c;
 
 }
